@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import '@lib/db'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
