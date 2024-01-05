@@ -32,7 +32,7 @@ export async function POST(req: Request) {
   const wh = new Webhook(CLERK_WEBHOOK_SECRET);
  
   let evt: WebhookEvent
- 
+  
   // Verify the payload with the headers
   try {
     evt = wh.verify(body, {
@@ -53,11 +53,12 @@ export async function POST(req: Request) {
         data: {
             externalUserId: payload.data.id,
             username: payload.data.username,
-            imageUrl: payload.data.imageUrl,
+            imageUrl: payload.data.image_url,
         }
     });
   }
- 
+  console.log(body);
+  console.log("hello");
   return new Response('', { status: 200 })
 }
  
