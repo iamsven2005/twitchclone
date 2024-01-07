@@ -1,4 +1,4 @@
-import { Logo } from "./_components/logo";
+import { Logo } from "../_components/logo";
 const AuthLayout = ({
     children
 }: {
@@ -15,5 +15,4 @@ const AuthLayout = ({
         </div> 
      );
 }
- 
 export default AuthLayout;
