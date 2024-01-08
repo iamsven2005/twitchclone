@@ -5,7 +5,7 @@ export const Actions = async () => {
     return (
         <div className="form-control gap-2">
             {!user && (
-                <SignInButton className="btn btn-primary"/>
+                <SignInButton><p className="btn">Sign-In</p></SignInButton>
             )}
         {user && (
         <a href={`/u/${user.username}`} className="btn">
