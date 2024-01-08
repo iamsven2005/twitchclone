@@ -7,7 +7,6 @@ CLERK PRISMA PLANETSCALE
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
