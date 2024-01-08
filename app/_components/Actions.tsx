@@ -1,4 +1,4 @@
-import {SignInButton, currentUser} from "@clerk/nextjs";
+import {currentUser} from "@clerk/nextjs";
 
 export const Actions = async () => {
     const user =await currentUser();

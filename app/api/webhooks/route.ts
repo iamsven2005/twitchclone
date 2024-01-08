@@ -1,14 +1,14 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
-import { db } from '@/lib/db'
+import {db} from '@/lib/db'
 export async function POST(req: Request) {
  
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
-  const CLERK_WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET
+  const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET
  
-  if (!CLERK_WEBHOOK_SECRET) {
-    throw new Error('Please add CLERK_WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local')
+  if (!WEBHOOK_SECRET) {
+    throw new Error('Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local')
   }
  
   // Get the headers
@@ -29,10 +29,10 @@ export async function POST(req: Request) {
   const body = JSON.stringify(payload);
  
   // Create a new Svix instance with your secret.
-  const wh = new Webhook(CLERK_WEBHOOK_SECRET);
+  const wh = new Webhook(WEBHOOK_SECRET);
  
   let evt: WebhookEvent
-  
+ 
   // Verify the payload with the headers
   try {
     evt = wh.verify(body, {
@@ -47,8 +47,9 @@ export async function POST(req: Request) {
     })
   }
  
+  // Get the ID and type
   const eventType = evt.type;
-  if  (eventType === "user.created"){
+   if  (eventType === "user.created"){
     await db.user.create({
         data: {
             externalUserId: payload.data.id,
@@ -57,8 +58,6 @@ export async function POST(req: Request) {
         }
     });
   }
-  console.log(body);
-  console.log("hello");
   return new Response('', { status: 200 })
 }
  
