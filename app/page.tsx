@@ -2,7 +2,7 @@ import {UserButton, currentUser} from "@clerk/nextjs"
 import {Logo2} from "./_components/logo2";
 import {Search} from "./_components/search";
 import {Actions} from "./_components/Actions";
-import {db} from "@/lib/db";
+import { Recommends } from "./_components/recommend"; 
 export default function Home(){
   return (
 
@@ -33,8 +33,7 @@ export default function Home(){
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
       <li className="text-primary">For You</li>
-      <li><a>gg</a></li>
-      <li><a>Sidebar Item 2</a></li>
+      <Recommends/>
       
     </ul>
   </div>

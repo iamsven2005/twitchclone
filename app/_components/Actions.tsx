@@ -1,7 +1,7 @@
 import {currentUser} from "@clerk/nextjs";
 
 export const Actions = async () => {
-    const user =await currentUser();
+    const user = await currentUser();
     return (
         <div className="form-control gap-2">
         {user && (
