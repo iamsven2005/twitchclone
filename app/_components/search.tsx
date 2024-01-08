@@ -27,7 +27,7 @@ import {SearchIcon, X} from "lucide-react";
     return (
         <form className="tooltip tooltip-bottom flex" data-tip="search" onSubmit={onSubmit}>
         <input type="Submit" className="btn" value="&#x1F50D;"/>
-        <input value={value} onChange={(e)=>setValue(e.target.value)}type="text" placeholder="Search" className="input input-ghost" />
+        <input value={value} onChange={(e)=>setValue(e.target.value)}type="text" placeholder="Search" className="input input-ghost w-40" />
         {value && (
             <div className="tooltip tooltip-bottom" data-tip="clear">
             <p className="btn" onClick={onClear}>X</p>
