@@ -182,7 +182,6 @@ def check_test_files():
 			raise Exception("Validation mismatch")
 
 # ----------------------------------------------------------------------
-
 def main():
 	print("------------")
 	rows = [["Hello", "🌎", None, ""], ["A\0B\nC", "Test 𝄞"], [], [""]]
