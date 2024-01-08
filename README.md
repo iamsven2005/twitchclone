@@ -1,12 +1,13 @@
 NEXTJS 14
 CLERK PRISMA PLANETSCALE
 
-<!-- // This is your Prisma schema file,
+// This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
@@ -21,4 +22,4 @@ model User{
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-} -->
+}
