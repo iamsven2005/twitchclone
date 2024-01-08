@@ -3,8 +3,6 @@ import qs from "query-string";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {SearchIcon, X} from "lucide-react";
-import {Button} from "next/navigation";
-
  export const Search = () => {
     const router = useRouter();
     const [value, setValue] = useState("");
@@ -12,7 +10,7 @@ import {Button} from "next/navigation";
         e.preventDefault();
         if (!value) return;
         const url = qs.stringifyUrl({
-            url:"/",
+            url:"/search",
             query: { term: value},
 
         },
@@ -29,7 +27,7 @@ import {Button} from "next/navigation";
     return (
         <form className="tooltip tooltip-bottom flex" data-tip="search" onSubmit={onSubmit}>
         <input type="Submit" className="btn" value="&#x1F50D;"/>
-        <input value={value} onChange={(e)=>setValue(e.target.value)}type="text" placeholder="Search" className="input input-bordered" />
+        <input value={value} onChange={(e)=>setValue(e.target.value)}type="text" placeholder="Search" className="input input-ghost" />
         {value && (
             <div className="tooltip tooltip-bottom" data-tip="clear">
             <p className="btn" onClick={onClear}>X</p>
