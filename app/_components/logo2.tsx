@@ -3,18 +3,26 @@ import { useState, useEffect } from 'react';
 export const Logo2 = () => {
   const [windowWidth, setWindowWidth] = useState(0);
 
-    useEffect(() => {
+  useEffect(() => {
+    // Check if the window object is defined (client-side)
+    if (typeof window !== 'undefined') {
+      // Set the initial window width
+      setWindowWidth(window.innerWidth);
+
+      // Update window width on resize
       const handleResize = () => {
         setWindowWidth(window.innerWidth);
       };
-  
+
+      // Add event listener for window resize
       window.addEventListener('resize', handleResize);
-  
-      // Cleanup the event listener on component unmount
+
+      // Remove event listener on component unmount
       return () => {
         window.removeEventListener('resize', handleResize);
       };
-    }, []);    
+    }
+  }, []);   
     return (
         <div>
         {windowWidth < 640 ? (

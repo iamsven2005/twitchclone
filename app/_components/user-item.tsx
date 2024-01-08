@@ -17,7 +17,7 @@ export const UserItem = ({
         <a href={href} className="btn btn-ghost" >
         <div className="avatar">
         <div className="w-10 rounded-full">
-            <img src={imageUrl} />
+            <img src={imageUrl} alt={username}/>
         </div>
         </div>    
             {username}
