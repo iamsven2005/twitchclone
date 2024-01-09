@@ -34,7 +34,6 @@ export default function Home(){
       {/* Sidebar content here */}
       <li className="text-primary">For You</li>
       <Recommends/>
-      
     </ul>
   </div>
 </div>
