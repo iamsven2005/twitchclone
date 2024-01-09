@@ -1,15 +1,20 @@
 import {UserButton, currentUser} from "@clerk/nextjs"
-import {Logo2} from "./_components/logo2";
-import {Search} from "./_components/search";
-import {Actions} from "./_components/Actions";
-import { Recommends } from "./_components/recommend"; 
-export default function Home(){
-  return (
-
+import {Logo2} from ".././_components/logo2";
+import {Search} from ".././_components/search";
+import {Actions} from ".././_components/Actions";
+import { Recommends } from ".././_components/recommend"; 
+import { Container } from ".././_components/Container";
+const BrowseLayout = ({
+    children,
+}: {
+    children: React.ReactNode;
+}) => {
+    return(
 <div className="drawer">
   <input id="my-drawer" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
     {
+      <div>
       <div className="navbar bg-base-100">
       <a href="/" className="navbar-start">
         <Logo2/>
@@ -23,7 +28,10 @@ export default function Home(){
       <UserButton afterSignOutUrl="/"/>
     
       </div>
-      
+      </div>
+      <Container>
+        {children}
+      </Container>
     </div>
     }
     <label htmlFor="my-drawer" className="btn btn-circle toast toast-start toast-middle">&rarr;</label>
@@ -37,9 +45,6 @@ export default function Home(){
     </ul>
   </div>
 </div>
-
-
-
-  )
-
-}
+    );
+};
+export default BrowseLayout

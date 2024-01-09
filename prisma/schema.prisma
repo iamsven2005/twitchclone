@@ -9,6 +9,7 @@ datasource db {
   url = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
+//SQLITE
 // model User{
 //   id String @id @default(uuid())
 //   username String @unique
@@ -22,11 +23,30 @@ datasource db {
 
 model User {
   id            String       @default(cuid()) @id
-  username      String
+  username      String       @unique
   imageUrl      String
-  externalUserId String @unique
+  credit        Int?
+  theme         String
+  externalUserId String      @unique
+  bio           String? 
+
+  following Follow[] @relation("Following")
+  followedBy Follow[] @relation("FollowedBy")
 
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   @@map(name: "users")
 }
+model Follow {
+    id String @id @default(cuid())
+    followerId String
+    followingId String
+
+    follower User @relation(name: "Following", fields: [followerId], references: [id], onDelete: Cascade)
+    following User @relation(name: "FollowedBy", fields: [followingId], references: [id], onDelete: Cascade)
+      createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+    @@unique([followerId, followingId])
+    @@index([followerId])
+    @@index([followingId])
+} 

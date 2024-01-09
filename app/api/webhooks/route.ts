@@ -55,6 +55,9 @@ export async function POST(req: Request) {
             externalUserId: payload.data.id,
             username: payload.data.username,
             imageUrl: payload.data.image_url,
+            credit: 300,
+            theme: 'default',
+            bio: 'new user'
         }
     });
   }
@@ -77,7 +80,8 @@ export async function POST(req: Request) {
       },
     })
   }
-  console.log(body);
+  console.log(`Webhook with and ID of`,eventType);
+  console.log('Webhook body:', body);
   return new Response('', { status: 200 })
 }
  

@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from 'react';
 export const Logo2 = () => {
   const [windowWidth, setWindowWidth] = useState(0);
