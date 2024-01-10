@@ -20,7 +20,7 @@ const Userpage = async ({params}: UserPageProps) => {
       <h1 className="text-5xl font-bold">User {user.username}</h1>
       <p className="py-6">Id: {user.id}</p>
       <p className="py-6">Is following: {`${isFollowing}`}</p>
-      <Flwbtn/>
+      <Flwbtn isFollowing={isFollowing} userId={user.id}/>
       
       <div className="form-control">
         <label className="label cursor-pointer gap-4">
