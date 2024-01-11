@@ -7,3 +7,11 @@ export const getUserByid = async (username: string) => {
     });
     return user;
 };
+export const getReasonByid = async (blockerId: string) => {
+    const reason = await db.block.findFirst({
+        where: {
+            blockerId,
+        },
+    });
+    return reason;
+};

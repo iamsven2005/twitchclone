@@ -3,7 +3,10 @@ import { getRecommended } from "@/lib/recommend-service";
 import { getFollowedUsers } from "@/lib/follow-service";
 import { Following } from "./following";
 export const Recommends = async () => {
-    const recommended = await getRecommended();
+    let recommended = await getRecommended();
+    if (getRecommended === null) {
+        recommended = ["NETWORK ISSUE"]
+    }
     const following = await getFollowedUsers();
     return(
         <div>

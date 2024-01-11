@@ -46,8 +46,8 @@ model Follow {
 
     follower User @relation(name: "Following", fields: [followerId], references: [id], onDelete: Cascade)
     following User @relation(name: "FollowedBy", fields: [followingId], references: [id], onDelete: Cascade)
-      createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+    createdAt     DateTime  @default(now()) @map(name: "created_at")
+    updatedAt     DateTime  @updatedAt @map(name: "updated_at")
     @@unique([followerId, followingId])
     @@index([followerId])
     @@index([followingId])

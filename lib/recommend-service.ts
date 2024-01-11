@@ -1,5 +1,6 @@
 import {db} from "@/lib/db";
 import {getSelf} from "@/lib/auth-service";
+import { toast } from "sonner";
 export const getRecommended = async () => {
     let userId;    
     try {
@@ -8,7 +9,7 @@ export const getRecommended = async () => {
     } catch {
         userId = null;
     }
-    let users = [];
+    let users: any[] = []; 
     if (userId) {
      users = await db.user.findMany({
         where: {
@@ -34,11 +35,17 @@ export const getRecommended = async () => {
         },
     })
     } else {
-        users = await db.user.findMany({
-            orderBy: {
-                createdAt: "desc"
-            },
-        });
+        try{
+            users = await db.user.findMany({
+                orderBy: {
+                    createdAt: "desc"
+                },
+            });
+        } catch {
+            return null;
+            throw new Error("VPN is on")
+        }
+
     }
 
     return users;
