@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
@@ -9,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Video',
-  description: 'Video Streaming Service',
+  description: 'Video Streaming Service', 
 }
 
 export default function RootLayout({
@@ -17,6 +18,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+
   return (
     <ClerkProvider>
     <html lang="en">
