@@ -7,7 +7,7 @@ import {
     KeyRound, 
     MessageSquare, 
     Users } from "lucide-react"
-
+import { NavItem } from './nav-item';
 export const Logo3 = () => {
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -47,9 +47,9 @@ export const Logo3 = () => {
 }
 export const CreateActions = () =>{
     return (
-        <div>
-            actions
-        </div>
+        <a className="btn btn-outline btn-accent"href="/">
+            Home
+        </a>
         
     )  
 }
@@ -84,9 +84,12 @@ export const CreateBar = () =>{
         <p className="stat-value">Creator Tools</p>
         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
             {routes.map((route) => (
-                <li key={route.href}>
-                    {route.label}
-                </li>
+                <NavItem 
+                key={route.href}
+                label={route.label}
+                icon={route.icon}
+                href={route.href}
+                isActive={pathName === route.href}/>
             ))}
         </ul>
         </div>

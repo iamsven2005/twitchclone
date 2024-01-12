@@ -57,8 +57,13 @@ export async function POST(req: Request) {
             imageUrl: payload.data.image_url,
             credit: 300,
             theme: 'default',
-            bio: 'new user'
-        }
+            bio: 'new user',
+            stream: {
+              create:{
+                name: `${payload.data.username}'s stream`,
+              },
+            },
+        },
     });
   }
   if (eventType === "user.updated"){
