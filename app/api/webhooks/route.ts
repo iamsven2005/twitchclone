@@ -50,7 +50,7 @@ export async function POST(req: Request) {
   // Get the ID and type
   const eventType = evt.type;
   if  (eventType === "user.created"){
-    await db.user.create({
+    const newUser = await db.user.create({
         data: {
             externalUserId: payload.data.id,
             username: payload.data.username,
@@ -58,12 +58,17 @@ export async function POST(req: Request) {
             credit: 300,
             theme: 'default',
             bio: 'new user',
-            stream: {
-              create:{
-                name: `${payload.data.username}'s stream`,
-              },
-            },
         },
+    });
+    await db.stream.create({
+      data: {
+              name: `${payload.data.username}'s stream`,
+              user: {
+                connect: {
+                  id: newUser.id,
+                },
+            },
+      },
     });
   }
   if (eventType === "user.updated"){
