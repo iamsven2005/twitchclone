@@ -6,7 +6,7 @@ export const Container = ({
     children,
 }: ContainerProps) => {
     return (
-        <div>
+        <div className="card-body">
             {children}
         </div>
     )

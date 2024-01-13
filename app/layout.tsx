@@ -9,8 +9,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Video',
-  description: 'Video Streaming Service', 
+  title: 'SQUARE',
+  description: 'Social media as a service', 
 }
 
 export default function RootLayout({
