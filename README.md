@@ -3,5 +3,5 @@ __Project Stack__
 NEXTJS 14 (app_router)
 
 CLERK PRISMA NEON(Postgres)
-LIVEKIT
+RTMP/WHIP LIVEKIT
 ## Currently hosted on vercel

@@ -1,6 +1,5 @@
 import {db} from "@/lib/db";
 import {getSelf} from "@/lib/auth-service";
-import { toast } from "sonner";
 export const getRecommended = async () => {
     let userId;    
     try {
@@ -26,8 +25,16 @@ export const getRecommended = async () => {
                     },
                 },
             },],
+
             NOT: {
                 id: userId,
+            },
+        },
+        include: {
+            stream: {
+                select: {
+                    isLive: true,
+                },
             },
         },
         orderBy: {
@@ -37,6 +44,13 @@ export const getRecommended = async () => {
     } else {
         try{
             users = await db.user.findMany({
+                include:{
+                    stream: {
+                        select: {
+                            isLive: true,
+                        }
+                    }
+                },
                 orderBy: {
                     createdAt: "desc"
                 },

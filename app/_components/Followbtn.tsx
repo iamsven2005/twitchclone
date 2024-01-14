@@ -73,7 +73,7 @@ export const Flwbtn = ({
     
 
     return (
-        <div>
+        <div className="flex gap-x-2">
         <button
         disabled={isPending}
         onClick={onfollow} 

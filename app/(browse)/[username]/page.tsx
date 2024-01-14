@@ -1,4 +1,4 @@
-import { getUserByid, getReasonByid } from "@/lib/user-service";
+import { getReasonByid, getUserByUsername } from "@/lib/user-service";
 import { notFound } from "next/navigation";
 import { isFollowingUser } from "@/lib/follow-service";
 import { Flwbtn } from "@/app/_components/Followbtn";
@@ -10,7 +10,7 @@ interface UserPageProps {
     };
 };
 const Userpage = async ({params}: UserPageProps) => {
-    const user = await getUserByid(params.username);
+    const user = await getUserByUsername(params.username);
     const reason = await getReasonByid(params.blockerId)
     if (!user){
         notFound();
@@ -30,7 +30,7 @@ const Userpage = async ({params}: UserPageProps) => {
     </div>
       <p className="py-6">Id: {user.id}</p>
       <p className="py-6">Is following: {`${isFollowing}`}</p>
-      <Flwbtn isFollowing={isFollowing} userId={user.id} isBlocking={isBlocking}/>
+      <Flwbtn isFollowing={isFollowing} userId={user.id} isBlocking={isBlocking} />
       <p className="py-6">
             {isBlocking ? `You have blocked this user. Reason: ${reason?.blockedReason}` : 'Not blocked'}
         </p>
