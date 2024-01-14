@@ -43,7 +43,6 @@ export const getRecommended = async () => {
             });
         } catch {
             return null;
-            throw new Error("VPN is on")
         }
 
     }

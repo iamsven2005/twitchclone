@@ -8,13 +8,19 @@ export const Recommended = ({
     data, 
 }: RecommendedProps) => {
     const showLabel = data && data.length > 0;
+    if(data === null){
+        alert("Connection error, please turn off your vpn");
+    }
     return (
         <li>
             {showLabel ? (
                 <p className="stat-title">Recommended</p>
             ) : (
-                <p className="stat-title">Recommended</p>
+                <div>
+                    <p className="stat-title">Recommended</p>
+                </div>
             )}
+
             {data && data.map((User) => (
             //set values here (live)
             <UserItem 
