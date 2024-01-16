@@ -2,7 +2,6 @@
 import qs from "query-string";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
-import {SearchIcon, X} from "lucide-react";
  export const Search = () => {
     const router = useRouter();
     const [value, setValue] = useState("");

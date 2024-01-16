@@ -73,24 +73,25 @@ export const Flwbtn = ({
     
 
     return (
-        <div className="flex gap-x-2">
+        <div className="flex gap-2  join join-vertical lg:join-horizontal">
         <button
         disabled={isPending}
         onClick={onfollow} 
-        className="btn btn-success">
+        className={!isFollowing ? "btn btn-success join-item" : "btn btn-info join-item "}>
         {isFollowing ? "Unfollow" : "Follow"}
         </button>
         <button
         disabled={isPending}
         onClick={onblock}
-        className="btn btn-success">
+        className={!isBlocking ? "btn btn-success join-item" : "btn btn-error join-item "}
+        >
         {isBlocking ? "Unblock" : "Block"}
         </button>
         {!isBlocking && (
         <input 
         type="text" 
         placeholder="Reason" 
-        className="input input-ghost"
+        className="input input-ghost join-item"
         value={blockReason}
         onChange={handleReasonChange}
         ></input>

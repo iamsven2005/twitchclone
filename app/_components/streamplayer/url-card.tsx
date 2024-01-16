@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CopyButton } from "./copy-button";
+import { CopyButton } from "../reuse/copy-button";
 interface UrlCardProps {
     value: string | null;
 }

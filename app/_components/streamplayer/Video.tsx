@@ -2,7 +2,7 @@
 
 import { useConnectionState, useRemoteParticipant, useTracks } from "@livekit/components-react";
 import { ConnectionState, Track } from "livekit-client";
-import { OfflineVideo } from "./offline-video";
+import { OfflineVideo } from "../reuse/loader";
 import { LiveVideo } from "./livevideo";
 
 interface Videoprops {
@@ -22,7 +22,7 @@ export const Video = ({
     ]).filter((track) => track.participant.identity === hostIdentity);
     let content;
     if (!participant && connectionState === ConnectionState.Connected) {
-        content = <OfflineVideo username={hostName}/>;
+        content = <OfflineVideo username={hostName}/>
     } 
     else if (!participant || tracks.length === 0) {
          content = <span className="loading loading-spinner loading-lg"></span>

@@ -6,8 +6,9 @@ import {
     Fullscreen,
     KeyRound, 
     MessageSquare, 
+    Settings, 
     Users } from "lucide-react"
-import { NavItem } from './nav-item';
+import { NavItem } from './reuse/nav-item';
 export const Logo3 = () => {
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -79,10 +80,33 @@ export const CreateBar = () =>{
             icon: Users,
         },
     ];
+    const settings = [
+        {
+            label:"Settings",
+            href: `/u/${user?.username}/settings`,
+            icon: Settings,
+        },
+    ];
     return (
         <div>
-        <p className="stat-value">Creator Tools</p>
+        <p className="text-lg">Creator Tools</p>
         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <div className="text-small">
+                General
+            </div>
+            {settings.map((settings) => (
+                <NavItem 
+                key={settings.href}
+                label={settings.label}
+                icon={settings.icon}
+                href={settings.href}
+                isActive={pathName === settings.href}/>
+            ))}
+        </ul>
+        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <div className="text-small">
+                Stream
+            </div>
             {routes.map((route) => (
                 <NavItem 
                 key={route.href}

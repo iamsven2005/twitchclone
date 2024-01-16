@@ -16,7 +16,7 @@ export const ToggleCard = ({
     const [isPending, startTransition] = useTransition();
     const onChange = async () => {
     startTransition(()=> {
-        updateStream({[field]: false})
+        updateStream({[field]: !value})
         .then(()=> toast.success("Chat settings updated!"))
         .catch(()=> toast.error("Something Went Wrong (Chat Settings)"))
     })}
@@ -25,6 +25,7 @@ export const ToggleCard = ({
         <label className="label cursor-pointer">
             <span className="label-text">{label}</span> 
             <input type="checkbox" className="toggle" checked={value} disabled={isPending} onChange={onChange}/>
+
         </label>
         </div>
 

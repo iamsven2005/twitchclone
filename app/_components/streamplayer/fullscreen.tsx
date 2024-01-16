@@ -14,11 +14,10 @@ export const FullscreenCrtl = ({
     const label = isFullscreen ? "Exit fullscreen" : "Enter fullscreen";
 
     return(
-    <div className="hero">
+    <div className="join-item">
         <div className="tooltip" data-tip={label}>
         <button className="btn"
         onClick={onToggle}
-        
         ><Icon className="w-5 h-5"/></button>
         </div>
     </div>

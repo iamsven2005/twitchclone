@@ -1,9 +1,9 @@
-import { UrlCard } from "@/app/_components/url-card";
+import { UrlCard } from "@/app/_components/streamplayer/url-card";
 import { getSelf } from "@/lib/auth-service";
 import { getStreamUserId } from "@/lib/stream-service";
 import { Stream } from "stream";
-import { KeyCard } from "@/app/_components/key-card";
-import { ConnectModal } from "@/app/_components/connect-modal";
+import { KeyCard } from "@/app/_components/streamplayer/key-card";
+import { ConnectModal } from "@/app/_components/streamplayer/connect-modal";
 const KeysPage = async() => {
     const self = await getSelf();
     const stream = await getStreamUserId(self.id);

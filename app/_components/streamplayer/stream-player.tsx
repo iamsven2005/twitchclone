@@ -4,6 +4,8 @@ import { useViewerToken } from "@/hooks/use-viewer-token";
 import { Stream, User } from "@prisma/client"
 import {LiveKitRoom} from "@livekit/components-react"
 import { Video } from "./Video";
+import { useSidebar } from "../../store/use-chat";
+import { Chat } from "./chat";
 interface StreamPlayerProps {
     user: User & { stream: Stream | null};
     stream: Stream;
@@ -19,7 +21,7 @@ export const StreamPlayer = ({
         name,
         identity,
     } = useViewerToken(user.id);
-    console.log({token, name, identity})
+    const { collapsed} = useSidebar((state) => state);
     if (!token || !name || !identity){
         return (
             <div>
@@ -32,14 +34,25 @@ export const StreamPlayer = ({
             <LiveKitRoom
             token={token}
             serverUrl={process.env.NEXT_PUBLIC_WS_URL}
-            className="hero bg-base-200"
+            className="hero bg-base-200 join join-vertical lg:join-horizontal"
             >
+
             <Video
             hostName={user.username}
+            hostIdentity={user.id}/>
+            <Chat
+            isFollowing={isFollowing}
+            viewerName={name}
+            hostName={user.username}
             hostIdentity={user.id}
-            
+            isChatEnabled={stream.isChatEnabled}
+            isChatDelayed={stream.isChatDelayed}
+            isChatFollowersOnly={stream.isChatFollowersOnly}
             />
+
             </LiveKitRoom>
+
         </div>
+
     )
 }

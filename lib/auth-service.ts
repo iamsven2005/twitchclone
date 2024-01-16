@@ -31,3 +31,17 @@ export const getSelfByUsername =async (username:string) => {
     }
     return user;
 };
+export const updateTheme = async (theme: string) => {
+    const self = await currentUser();
+    if (!self || !self.username) {
+        throw new Error("UNAUTH");
+    }
+
+    // Update the theme in the database
+    const updatedUser = await db.user.update({
+        where: { externalUserId: self.id },
+        data: { theme },
+    });
+
+    return updatedUser;
+};

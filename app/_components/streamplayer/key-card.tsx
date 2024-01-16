@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { CopyButton } from "./copy-button";
+import { CopyButton } from "../reuse/copy-button";
 interface KeyCardProps {
     value: string | null;
 }

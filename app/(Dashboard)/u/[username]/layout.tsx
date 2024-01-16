@@ -1,9 +1,9 @@
 import { getSelfByUsername } from "@/lib/auth-service";
 import { redirect } from "next/navigation";
 import {UserButton, } from "@clerk/nextjs"
-import {Search} from "@/app/_components/search";
+import {Search} from "@/app/_components/reuse/search";
 import {CreateActions, Logo3, CreateBar} from "@/app/_components/CreatorActions"
-import { Container } from "@/app/_components/Container";
+import { Container } from "@/app/_components/reuse/Container";
 interface CreatorLayoutProps {
     params: { username:string};
     children: React.ReactNode;

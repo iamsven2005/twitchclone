@@ -1,6 +1,6 @@
 "use client";
 import { Follow, User } from "@prisma/client";
-import { UserItem } from "./user-item";
+import { UserItem } from "../user-item";
 interface FollowingProps {
     data: (Follow & { 
         following: User & {

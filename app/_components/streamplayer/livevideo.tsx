@@ -57,9 +57,9 @@ export const LiveVideo = ({
         }
     });
     return(
-        <div ref={wrapperRef}className="card bg-base-100 shadow-xl">
+        <div ref={wrapperRef}className="card bg-base-100 shadow-xl join-item">
             <video ref={videoRef} width="100%"/>
-            <div className="card-actions justify-end">
+            <div className="card-actions join join-horizontal">
             <FullscreenCrtl isFullscreen={isFullscreen} onToggle = {toggleFullscreen}/>
             <VolumeCtrl onChange={onVolumeChange} onToggle = {toggleMute} value={Volume}/>
             </div>

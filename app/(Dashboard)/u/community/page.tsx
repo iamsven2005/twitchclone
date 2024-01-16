@@ -1,7 +1,7 @@
 import { getSelf } from "@/lib/auth-service";
 import { getStreamUserId } from "@/lib/stream-service";
 import { ToggleCard } from "@/app/_components/streamplayer/toggle-card";
-const ChatPage = async() => {
+const CommunityPage = async() => {
     const self = await getSelf();
     const stream = await getStreamUserId(self.id);
 
@@ -34,4 +34,4 @@ const ChatPage = async() => {
     );
 }
 
-export default ChatPage;
+export default CommunityPage;

@@ -1,7 +1,7 @@
 import { Recommended } from "./Recommended";
 import { getRecommended } from "@/lib/recommend-service";
 import { getFollowedUsers } from "@/lib/follow-service";
-import { Following } from "./following";
+import { Following } from "./Users/following";
 export const Recommends = async () => {
     const recommended = await getRecommended();
     const following = await getFollowedUsers();

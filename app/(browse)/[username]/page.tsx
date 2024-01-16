@@ -1,7 +1,7 @@
 import { getReasonByid, getUserByUsername } from "@/lib/user-service";
 import { notFound } from "next/navigation";
 import { isFollowingUser } from "@/lib/follow-service";
-import { Flwbtn } from "@/app/_components/Followbtn";
+import { Flwbtn } from "@/app/_components/Users/Followbtn";
 import { isBlockingUser } from "@/lib/block-service";
 interface UserPageProps {
     params: {

@@ -1,4 +1,4 @@
-import { Logo } from "../_components/logo";
+import { Logo } from "../_components/reuse/logo";
 const AuthLayout = ({
     children
 }: {

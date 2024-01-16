@@ -28,13 +28,13 @@ export const VolumeCtrl = ({
         onChange(newValue);
       };
     return (
-        <div>
+        <div className="join">
         <div className="tooltip" data-tip={label}>
-        <button className="btn"
+        <button className="btn join-item"
         onClick={onToggle}
         ><Icon className="h-5 w-5"/></button>
         </div>
-       <input type="range" min={0} max={100} value={value} className="range" step={1} onChange={handleChange}/>
+       <input type="range" min={0} max={100} value={value} className="range join-item range-error btn" step={1} onChange={handleChange}/>
 
         </div>
 
