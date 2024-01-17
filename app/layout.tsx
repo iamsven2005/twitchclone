@@ -30,7 +30,7 @@ export default function RootLayout({
         <Analytics /><SpeedInsights/>
 
       <Toaster theme="system" position="bottom-center" />
-      <button className="g-recaptcha invisible" data-size="invisible" data-sitekey="6Le99RwpAAAAACFLP5XKMKHhHTIbNlvN7u8Hciu6" data-callback='onSubmit'data-action='submit'>Submit</button>
+      <button className="g-recaptcha invisible" data-size="invisible" data-sitekey="6Lcua1MpAAAAAKKmBUx3A_JDXWPt7lP1_Tb1c3ka" data-callback='onSubmit'data-action='submit'>Submit</button>
 
     </body>
     </html>
