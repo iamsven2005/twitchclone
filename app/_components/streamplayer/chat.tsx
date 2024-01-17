@@ -77,7 +77,7 @@ export const Chat = ({
         value={value}
         onChange={onChange}
         isHidden={isHidden}
-        isFollowsOnly={isChatFollowersOnly}
+        isFollowersOnly={isChatFollowersOnly}
         isFollowing={isFollowing}
         isDelayed={isChatDelayed}
         />

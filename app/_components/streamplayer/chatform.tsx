@@ -1,62 +1,85 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { ChatInfo } from "./chat-info";
 
-interface ChatProps{
-    onSubmit: () => void;
-    value: string;
-    onChange: (value: string) => void;
-    isHidden:boolean;
-    isFollowsOnly:boolean;
-    isFollowing: boolean;
-    isDelayed: boolean;
+interface ChatFormProps {
+  onSubmit: () => void;
+  value: string;
+  onChange: (value: string) => void;
+  isHidden: boolean;
+  isFollowersOnly: boolean;
+  isFollowing: boolean;
+  isDelayed: boolean;
 };
+
 export const ChatForm = ({
-    onSubmit,
-    value,
-    onChange,
-    isHidden,
-    isFollowsOnly,
-    isFollowing,
-    isDelayed,
-}:ChatProps) => {
-    const [isDelayedBlk, setisDelayedBlk] = useState(false);
-    const isNotFollowing = !isFollowing && !isFollowsOnly;
-    const isDisabled = isHidden || isDelayedBlk || isNotFollowing;
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (!value || isDisabled) return;
-        if(isDelayed && !isDelayedBlk) {
-            setisDelayedBlk(true);
-            setTimeout(()=>{
-            setisDelayedBlk(false);
-            },3000)
-        }
-        else{
-            onSubmit();
-        }
-    }
-    if (isHidden) {
-        return null;
-    }
-    return(
-        <form onSubmit={handleSubmit} className="join card-actions justify-center">
+  onSubmit,
+  value,
+  onChange,
+  isHidden,
+  isFollowersOnly,
+  isFollowing,
+  isDelayed,
+}: ChatFormProps) => {
+  const [isDelayBlocked, setIsDelayBlocked] = useState(false);
 
-            <input
-            disabled={isDisabled}
-            onChange={(e) => onChange(e.target.value)}
-            value={value} 
-            type="text" 
-            placeholder="Type here" 
-            className="join-item input input-bordered input-info w-full max-w-xs" />
+  const isFollowersOnlyAndNotFollowing = isFollowersOnly && !isFollowing;
+  const isDisabled = isHidden || isDelayBlocked || isFollowersOnlyAndNotFollowing;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!value || isDisabled) return;
+
+    if (isDelayed && !isDelayBlocked) {
+      setIsDelayBlocked(true);
+      setTimeout(() => {
+        setIsDelayBlocked(false);
+        onSubmit();
+      }, 3000);
+    } else {
+      onSubmit();
+    }
+  }
+
+  if (isHidden) {
+    return null;
+  }
+
+  return (
+    <form 
+      onSubmit={handleSubmit} 
+      className="flex flex-col items-center gap-y-4 p-3"
+    >
+      <div className="w-full">
+        <ChatInfo
+          isDelayed={isDelayed}
+          isFollowersOnly={isFollowersOnly}
+        />
+        <input
+        type="text"
+          onChange={(e) => onChange(e.target.value)}
+          value={value}
+          disabled={isDisabled}
+          placeholder="Send a message"
+          className={cn(
+            "input border-white/10",
+            (isFollowersOnly || isDelayed) && "rounded-t-none border-t-0"
+          )}
+        />
+      </div>
+      <div className="ml-auto">
         <button
-        type="submit"
-        className="btn btn-primary join-item"
-        disabled={isDisabled}>
-            Send
+          type="submit"
+          className="btn btn-primary"
+          disabled={isDisabled}
+        >
+          Chat
         </button>
-        </form>
-
-    )
-}
+      </div>
+    </form>
+  );
+};

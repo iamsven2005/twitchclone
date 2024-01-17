@@ -25,15 +25,16 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
+    <script src="https://www.google.com/recaptcha/api.js"/>
+
       <body className={inter.className}>
         {children}
-
         <Analytics /><SpeedInsights/>
+
       <Toaster theme="system" position="bottom-center" />
     </body>
     </html>
     </ClerkProvider>
-
   );
 } catch (error) {
   console.error('Connection error:', error);
