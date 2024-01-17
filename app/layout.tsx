@@ -24,12 +24,15 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 
       <body className={inter.className}>
         {children}
         <Analytics /><SpeedInsights/>
 
       <Toaster theme="system" position="bottom-center" />
+      <button className="g-recaptcha invisible" data-size="invisible" data-sitekey="6Le99RwpAAAAACFLP5XKMKHhHTIbNlvN7u8Hciu6" data-callback='onSubmit'data-action='submit'>Submit</button>
+
     </body>
     </html>
     </ClerkProvider>
