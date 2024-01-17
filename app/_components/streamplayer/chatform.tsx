@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { ChatInfo } from "./chat-info";
 
 interface ChatFormProps {
   onSubmit: () => void;
@@ -45,9 +44,9 @@ export const ChatForm = ({
     }
   }
 
-  if (isHidden) {
-    return null;
-  }
+  // if (isHidden) {
+  //   return null;
+  // }
 
   return (
     <form 
@@ -55,10 +54,7 @@ export const ChatForm = ({
       className="flex flex-col items-center gap-y-4 p-3"
     >
       <div className="w-full">
-        <ChatInfo
-          isDelayed={isDelayed}
-          isFollowersOnly={isFollowersOnly}
-        />
+
         <input
         type="text"
           onChange={(e) => onChange(e.target.value)}

@@ -4,13 +4,25 @@ import {Search} from "../_components/reuse/search";
 import {Actions} from "../_components/reuse/Actions";
 import { Recommends } from ".././_components/recommend"; 
 import { Container } from "../_components/reuse/Container";
-const BrowseLayout = ({
-    children,
-}: {
-    children: React.ReactNode;
-}) => {
-    return(
+import { getUserByUsername } from "@/lib/user-service";
+interface BrowseLayoutProps {
+  children: React.ReactNode;
+
+}
+
+const BrowseLayout = async ({ children }: BrowseLayoutProps) => {
+  const params = await currentUser() || null;
+  let self = null; // Declare self outside the if block
+
+  if (params !== null) {
+    self = await getUserByUsername(params.username);
+  }
+
+  return(
 <div className="drawer">
+<input type="checkbox"         
+value={self?.theme ?? "default"} 
+ className="invisible theme-controller" checked disabled/>
   <input id="my-drawer" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
     {
@@ -39,6 +51,7 @@ const BrowseLayout = ({
   <div className="drawer-side">
     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+      {/* Sidebar content here */}
       <li className="text-primary">For You</li>
       <Recommends/>
     </ul>

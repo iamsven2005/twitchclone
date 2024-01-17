@@ -113,3 +113,18 @@ export const unfollowUser = async (id: string) => {
     });
     return follow;
 };
+export const updateSelfTheme = async (newTheme: string) => {
+    const self = await getSelf();
+  
+    // Update the theme for the current user
+    const updatedUser = await db.user.update({
+      where: {
+        id: self.id,
+      },
+      data: {
+        theme: newTheme,
+      },
+    });
+  
+    return updatedUser;
+  };

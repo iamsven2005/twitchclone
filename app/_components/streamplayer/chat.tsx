@@ -7,7 +7,6 @@ import { useEffect, useMemo, useState } from "react";
 import { ChatForm } from "./chatform";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 import { ChatInfo } from "./chat-info";
-import { ChatList } from "./chat-list";
 interface ChatProps {
     hostName: string;
     hostIdentity: string;
@@ -88,10 +87,7 @@ export const Chat = ({
 
     <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Chat" />
     <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-    <ChatList
-        messages={reversedMessages}
-        isHidden={isHidden}
-        />
+
     </div>
 
     <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tab 3" />

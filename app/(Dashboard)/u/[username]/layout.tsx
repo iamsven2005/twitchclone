@@ -18,7 +18,10 @@ const CreatorLayout = async({
     }
     return ( 
 <div className="drawer">
-  <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+<input type="checkbox" 
+        value={self?.theme ?? "default"} // Use nullish coalescing operator
+        className="invisible theme-controller" checked disabled/>
+  <input id="my-drawer" type="checkbox" className="drawer-toggle"  />
   <div className="drawer-content">
     {
       <div>

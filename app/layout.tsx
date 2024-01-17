@@ -6,7 +6,6 @@ import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from 'sonner';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { PrismaClient } from '@prisma/client';
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -25,7 +24,6 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-    <script src="https://www.google.com/recaptcha/api.js"/>
 
       <body className={inter.className}>
         {children}

@@ -1,5 +1,8 @@
 import { db } from "@/lib/db";
-export const getUserByUsername = async (username: string) => {
+export const getUserByUsername = async (username: string | null) => {
+    if (username == null){
+        return null;
+    }
     const user = await db.user.findUnique({
         where: {
             username,
@@ -9,7 +12,7 @@ export const getUserByUsername = async (username: string) => {
             stream: true,
         }
     });
-    return user;
+    return user || null; // Return null explicitly if user is not found
 };
 export const getUserByid = async (id: string) => {
     const user = await db.user.findUnique({

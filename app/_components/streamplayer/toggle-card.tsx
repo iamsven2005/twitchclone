@@ -7,6 +7,7 @@ interface ToggleCardProps {
     label: string;
     value: boolean;
     field: FieldTypes;
+    string: string;
 }
 export const ToggleCard = ({
     label,
