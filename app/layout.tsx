@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" defer></script>
 
       <body className={inter.className}>
         {children}
