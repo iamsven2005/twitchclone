@@ -88,4 +88,11 @@ model Stream {
     updatedAt     DateTime  @updatedAt @map(name: "updated_at")
     @@index([userId])
     @@index([ingressId])
-}
+} 
+model Message {
+    id      String @id @default(cuid())
+    name    String @db.Text
+    time    String @db.Text
+    message String @db.Text
+    roomid  String @db.Text
+ }

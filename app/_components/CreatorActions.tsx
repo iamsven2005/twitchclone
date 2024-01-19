@@ -38,7 +38,7 @@ export const Logo3 = () => {
           <div style={{ display: 'none' }}> </div>
         ) : (
         <div>
-        <div id="logo" className="btn btn-ghost text-xl">Creator Studio</div>
+        <div id="logo" className="btn btn-ghost text-xl">CREATOR</div>
         </div>
                 )}
       </div>

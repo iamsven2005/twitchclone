@@ -31,3 +31,23 @@ export const getReasonByid = async (blockerId: string) => {
     });
     return reason;
 };
+export const SeeMessage = async (roomid: string) => {
+    const reason = await db.message.findMany({
+        where: {
+            roomid,
+        },
+    });
+    return reason;
+};
+export const PostMessage = async (roomid: string, time: string, message: string, name: string ) => {
+    const reason = await db.message.create({
+        data:{
+            roomid,
+            message,
+            time,
+            name,
+        }
+    });
+    return reason;
+};
+

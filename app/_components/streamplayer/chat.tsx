@@ -3,7 +3,6 @@ import { useSidebar } from "../../store/use-chat";
 import { useState } from "react";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 import { ChatInfo } from "./chat-info";
-import ChatSection from "./Chatsection";
 interface ChatProps {
     hostName: string;
     hostIdentity: string;
@@ -12,6 +11,7 @@ interface ChatProps {
     isChatEnabled: boolean;
     isChatDelayed: boolean;
     isChatFollowersOnly: boolean;
+
 };
 export const Chat = ({
     hostName,
@@ -47,15 +47,15 @@ export const Chat = ({
             isDelayed={isChatDelayed}
             isFollowersOnly={isChatFollowersOnly}
             />
-        <ChatSection
-                hostIdentity={hostIdentity}
-                viewerName={viewerName}
-                hostName={hostName}
-                isHidden={isHidden}
-                isFollowersOnly={isChatFollowersOnly}
-                isFollowing={isFollowing}
-                isDelayed={isChatDelayed}
-        />
+        {/* <ChatService 
+                 hostIdentity={hostIdentity}
+                 viewerName={viewerName}
+                 hostName={hostName}
+                 isHidden={isHidden}
+                 isFollowersOnly={isChatFollowersOnly}
+                 isFollowing={isFollowing}
+                 isDelayed={isChatDelayed}
+        /> */}
         </div>
     </div>
 
