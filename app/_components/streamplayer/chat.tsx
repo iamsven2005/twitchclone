@@ -4,7 +4,6 @@ import { useState } from "react";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 import { ChatInfo } from "./chat-info";
 import ChatSection from "./Chatsection";
-import { ChatCommmunity } from "./chat-community";
 interface ChatProps {
     hostName: string;
     hostIdentity: string;
