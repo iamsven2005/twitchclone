@@ -10,14 +10,12 @@ interface StreamPlayerProps {
     user: User & { stream: Stream | null};
     stream: Stream;
     isFollowing: boolean;
-    data:(User & {stream: {isLive: boolean} | null;})[] | null;
 
 }
 export const StreamPlayer = ({
     user,
     stream,
     isFollowing,
-    data,
 }:StreamPlayerProps) => {
     const {
         token,
@@ -44,7 +42,6 @@ export const StreamPlayer = ({
             hostName={user.username}
             hostIdentity={user.id}/>
             <Chat
-            data={data}
             isFollowing={isFollowing}
             viewerName={name}
             hostName={user.username}
