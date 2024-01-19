@@ -1,6 +1,6 @@
 "use client";
 
-import { creatIngress } from "@/lib/ingress";
+import { createIngress } from "@/lib/ingress";
 import { IngressInput } from "livekit-server-sdk";
 import { AlertTriangle } from "lucide-react";
 import { useState, ChangeEvent, useTransition, useRef, ElementRef } from "react";
@@ -23,12 +23,13 @@ export const ConnectModal = () => {
   };
   const onSubmit = () => {
     startTransition(() => {
-      creatIngress(parseInt(ingressType))
-      .then(()=> {
-          toast.success("Ingress created")
-          closeRef?.current?.click();})
-      .catch(()=> toast.error("Ingress Error"))
-    })
+      createIngress(parseInt(ingressType))
+        .then(() => {
+          toast.success("Ingress created");
+          closeRef?.current?.click();
+        })
+        .catch(() => toast.error("Ingress Spam"));
+    });
   }
   return (
     <div>
@@ -53,7 +54,7 @@ export const ConnectModal = () => {
         </select>
             <button disabled={isPending}onClick={onSubmit}className="btn btn-primary">Generate</button>
             <form method="dialog">
-                <button className="btn" ref={closeRef}>Cancel</button>
+                <button ref={closeRef}className="btn">Cancel</button>
             </form>
             </div>
         </div>
