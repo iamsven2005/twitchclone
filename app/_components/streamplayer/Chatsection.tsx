@@ -13,6 +13,7 @@ interface Message {
   hostName: string;
   isFollowersOnly: boolean;
   isDelayed: boolean;
+  time: string;
 }
 
 interface ChatSectionProps {
@@ -39,12 +40,21 @@ const ChatSection: React.FC<ChatSectionProps> = ({
   const viewName = viewerName;
   const roomKey = `chat_${hostIdentity}`; // Use a different key for each room
   const disabled = isFollowersOnly === isFollowing || isHidden;
-
+  const [currentTime, setCurrentTime] = useState(new Date());
+  let time = currentTime.toLocaleTimeString();
   useEffect(() => {
     // Load messages from localStorage on component mount
     loadMessages();
   }, [hostIdentity]); // Reload messages when hostIdentity changes
+  useEffect(() => {
+    // Update the current time every second
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
 
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
   const loadMessages = () => {
     const storedMessages = localStorage.getItem(roomKey);
     if (storedMessages) {
@@ -70,6 +80,7 @@ const ChatSection: React.FC<ChatSectionProps> = ({
       hostName: hostName,
       isFollowersOnly: isFollowersOnly,
       isDelayed: isDelayed,
+      time: time,
     };
 
     if (isDelayed) {
@@ -93,7 +104,7 @@ const ChatSection: React.FC<ChatSectionProps> = ({
           <li
             className={`text-${stringToColor(viewName)}`}
             key={message.id}
-          >{`${message.viewerName}: ${message.text}`}</li>
+          >{`${message.time}${message.viewerName}: ${message.text}`}</li>
         ))}
       </ul>
       <div>

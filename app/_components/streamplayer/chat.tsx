@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 import { ChatInfo } from "./chat-info";
 import ChatSection from "./Chatsection";
+import { ChatCommmunity } from "./chat-community";
 interface ChatProps {
     hostName: string;
     hostIdentity: string;
@@ -57,8 +58,6 @@ export const Chat = ({
                 isDelayed={isChatDelayed}
         />
         </div>
-
-
     </div>
 
     <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Chat" />
