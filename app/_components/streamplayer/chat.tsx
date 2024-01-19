@@ -1,12 +1,9 @@
 "use client"
-import {useMediaQuery} from "usehooks-ts"
 import { useSidebar } from "../../store/use-chat";
-import { useChat, useConnectionState, useRemoteParticipant } from "@livekit/components-react";
-import { ConnectionState } from "livekit-client";
-import { useEffect, useMemo, useState } from "react";
-import { ChatForm } from "./chatform";
+import { useState } from "react";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 import { ChatInfo } from "./chat-info";
+import ChatSection from "./Chatsection";
 interface ChatProps {
     hostName: string;
     hostIdentity: string;
@@ -25,33 +22,13 @@ export const Chat = ({
     isChatDelayed,
     isChatFollowersOnly,
 }: ChatProps) => {
-    const matches = useMediaQuery('(max-width: 1024px)');
     const {collapsed, varient, onExpand, onCollapse} = useSidebar((state)=> state)
-    const connectionState = useConnectionState();
-    const participant = useRemoteParticipant(hostIdentity);
-    const isOnline = participant && connectionState === ConnectionState.Connected
-    const isHidden = !isChatEnabled || !isOnline;
-    const [value, setValue] = useState("");
+    const isHidden = !isChatEnabled;
     const [isChatVisible, setIsChatVisible] = useState(true); // Initial visibility
-    const {chatMessages: messages, send} = useChat();
     const Icon = collapsed ? ArrowLeftFromLine : ArrowRightFromLine
     const label = collapsed ? "Expand" : "Hide";
-    useEffect(()=>{
-        if (matches){
-            onExpand();
-        }
-    },[matches, onExpand])
-    const reversedMessages = useMemo(()=> {
-        return messages.sort((a,b)=> b.timestamp - a.timestamp);
-    }, [messages]);
-    const onSubmit = () => {
-        if(!send) return;
-        send(value);
-        setValue("");
-    };
-    const onChange = (value:string) => {
-        setValue(value);
-    }
+
+
     const toggleChatVisibility = () => {
         setIsChatVisible((prevVisibility) => !prevVisibility);
       };
@@ -70,15 +47,14 @@ export const Chat = ({
             isDelayed={isChatDelayed}
             isFollowersOnly={isChatFollowersOnly}
             />
-
-        <ChatForm
-        onSubmit={onSubmit}
-        value={value}
-        onChange={onChange}
-        isHidden={isHidden}
-        isFollowersOnly={isChatFollowersOnly}
-        isFollowing={isFollowing}
-        isDelayed={isChatDelayed}
+        <ChatSection
+                hostIdentity={hostIdentity}
+                viewerName={viewerName}
+                hostName={hostName}
+                isHidden={isHidden}
+                isFollowersOnly={isChatFollowersOnly}
+                isFollowing={isFollowing}
+                isDelayed={isChatDelayed}
         />
         </div>
 
