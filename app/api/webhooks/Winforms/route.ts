@@ -2,7 +2,7 @@
     const payload = await req.text()
     const body = JSON.stringify(payload);
     let output = 'We currently do not have an answer for that';
-    if (body.toLowerCase().includes('router') || body.toLowerCase().includes('modem') || body.toLowerCase().includes('switches') || body.toLowerCase().includes('switch') || body.toLowerCase().includes('routers')) {
+    if (body.toLowerCase().includes('wifi') || body.toLowerCase().includes('router') || body.toLowerCase().includes('modem') || body.toLowerCase().includes('switches') || body.toLowerCase().includes('switch') || body.toLowerCase().includes('routers')) {
         const routerResponses = [
           'Solution: Analyze traffic patterns, upgrade network switches, and implement Quality of Service (QoS) settings.',
           'Solution: Replace the faulty network devices, restore configurations, and monitor for recurring issues.',
