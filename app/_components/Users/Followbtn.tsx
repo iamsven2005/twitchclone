@@ -1,5 +1,5 @@
 "use client";
-import { onBlock, onUnBlock } from "@/lib/block";
+import { onBlock, onUnblock } from "@/lib/block";
 import { onFollow, onUnfollow } from "@/lib/follow";
 import { useTransition, useState } from "react";
 import { toast } from "sonner";
@@ -40,14 +40,14 @@ export const Flwbtn = ({
     };
     const handleBlock = () => {
         startTransition(()=> {
-            onBlock(userId, blockReason)
+            onBlock(userId)
             .then((data)=> toast.success(`You are now Blocking ${data.blocked.username}`))
             .catch(()=> toast.error("Something Went Wrong"));
         });
     };
     const handleUnBlock = () => {
         startTransition(() => {
-            onUnBlock(userId)
+            onUnblock(userId)
                 .then((data) => {
                     if (data?.blocked?.username) {
                         toast.success(`You have unBlocked ${data.blocked.username}`);
@@ -66,10 +66,6 @@ export const Flwbtn = ({
             handleBlock();
         }
     };
-    const handleReasonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('Textbox value:', event.target.value);
-        setBlockReason(event.target.value);
-    };
     
 
     return (
@@ -87,15 +83,6 @@ export const Flwbtn = ({
         >
         {isBlocking ? "Unblock" : "Block"}
         </button>
-        {!isBlocking && (
-        <input 
-        type="text" 
-        placeholder="Reason" 
-        className="input input-ghost join-item"
-        value={blockReason}
-        onChange={handleReasonChange}
-        ></input>
-        )}
 
         </div>
     );

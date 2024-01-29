@@ -27,9 +27,8 @@ export const CommunityItem = ({
   const Reason = "Blocked during stream";
   const handleBlock = () => {
     if (!participantName || isSelf || !isHost) return;
-
     startTransition(() => {
-      onBlock(participantIdentity, Reason)
+      onBlock(participantIdentity)
         .then(() => toast.success(`Blocked ${participantName}`))
         .catch(() => toast.error("Something went wrong"));
     });

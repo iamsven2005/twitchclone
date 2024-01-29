@@ -1,21 +1,19 @@
 import { db } from "@/lib/db";
 import { getSelf } from "@/lib/auth-service";
 export const getBlockedUsers = async () => {
-    try {
-        const self = await getSelf();
-        const BlockedUsers = db.block.findMany({
-            where:{
-                blockerId: self.id,
-            },
-            include:{
-                blocked: true,
-            },
-        });
-        return BlockedUsers;
-    }catch {
-        return [];
-    }
-}
+    const self = await getSelf();
+  
+    const blockedUsers = await db.block.findMany({
+      where: {
+        blockerId: self.id,
+      },
+      include: {
+        blocked: true,
+      },
+    });
+  
+    return blockedUsers;
+  };
 export const isBlockingUser = async (id: string) => {
     try{
         const self = await getSelf();

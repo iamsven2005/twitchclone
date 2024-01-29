@@ -1,37 +1,30 @@
-import { getSelf } from "@/lib/auth-service";
-import { getStreamUserId } from "@/lib/stream-service";
-import { ToggleCard } from "@/app/_components/streamplayer/toggle-card";
-const CommunityPage = async() => {
-    const self = await getSelf();
-    const stream = await getStreamUserId(self.id);
+import {format } from "date-fns";
 
-    return (
-            <div className="card-body">
-                <h1 className="card-title">
-                    Chat Settings
-                </h1>
-                {stream === null || stream === undefined ? (
-                    <div className="justify-center">Stream not started</div>
-                ) : (
-                <div className="form-control">
-                <ToggleCard 
-                field="isChatEnabled"
-                label="Enable Chat"
-                value={stream.isChatEnabled}
-                />
-                <ToggleCard 
-                field="isChatDelayed"
-                label="Delay Chat"
-                value={stream.isChatDelayed}
-                />                
-                <ToggleCard 
-                field="isChatFollowersOnly"
-                label="Follow to chat"
-                value={stream.isChatFollowersOnly}
-                />
-                </div>)}
-            </div>
-    );
+import { getBlockedUsers } from "@/lib/block-service";
+
+import { DataTable } from "@/app/_components/Community/data-table"; 
+import { columns } from "@/app/_components/Community/columns"; 
+const CommunityPage = async () => {
+  const blockedUsers = await getBlockedUsers();
+
+  const formattedData = blockedUsers.map((block) => ({
+    ...block,
+    userId: block.blocked.id,
+    imageUrl: block.blocked.imageUrl,
+    username: block.blocked.username,
+    createdAt: format(new Date(block.blocked.createdAt), "dd/MM/yyyy"),
+  }));
+
+  return ( 
+    <div className="p-6">
+      <div className="mb-4">
+        <h1 className="text-2xl font-bold">
+          Community Settings
+        </h1>
+      </div>
+      <DataTable columns={columns} data={formattedData} />
+    </div>
+   );
 }
-
+ 
 export default CommunityPage;

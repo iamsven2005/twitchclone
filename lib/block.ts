@@ -1,35 +1,43 @@
 "use server";
-import { BlockUser, unBlockUser } from "./block-service";
+
 import { revalidatePath } from "next/cache";
-export const onBlock = async (id: string, result: string) => {
-    try{
-        const reason = result;
-        const BlockedUser = await BlockUser(id, reason);
-        revalidatePath("/");
-        if (BlockedUser){
-            revalidatePath(`/${BlockedUser.blocked.username}`);
-        }
-        return BlockedUser;
-    }catch (error){
-        throw new Error("Error at BlockUser");
-    };
+import { RoomServiceClient } from "livekit-server-sdk";
+import { getSelf } from "@/lib/auth-service";
+import { BlockUser, unBlockUser } from "./block-service";
+
+const roomService = new RoomServiceClient(
+  process.env.LIVEKIT_API_URL!,
+  process.env.LIVEKIT_API_KEY!,
+  process.env.LIVEKIT_API_SECRET!,
+);
+
+export const onBlock = async (id: string) => {
+  const self = await getSelf();
+
+  let blockedUser;
+
+  try {
+    const reason = "Blocked during stream"
+    blockedUser = await BlockUser(id, reason);
+  } catch {
+    // This means user is a guest
+  }
+
+  try {
+    await roomService.removeParticipant(self.id, id);
+  } catch {
+    // This means user is not in the room
+  }
+
+  revalidatePath(`/u/${self.username}/community`);
+
+  return blockedUser;
 };
-export const onUnBlock = async (id: string) => {
-    try {
-        const unBlockedUser = await unBlockUser(id);
-        revalidatePath("/");
 
-        if (unBlockedUser) {
-            revalidatePath(`/${unBlockedUser?.blocked.username}`);
-        }
+export const onUnblock = async (id: string) => {
+  const self = await getSelf();
+  const unblockedUser = await unBlockUser(id);
 
-        return unBlockedUser;
-    } catch (error) {
-        if (error instanceof Error && error.message === "Not Blocking") {
-            console.warn("User is not currently blocking this user");
-            return null; // or handle it in a way that suits your application logic
-        } else {
-            console.error(error); // Log the unknown error for debugging
-        }
-    }
+  revalidatePath(`/u/${self.username}/community`);
+  return unblockedUser;
 };

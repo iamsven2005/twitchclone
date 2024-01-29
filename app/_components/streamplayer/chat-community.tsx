@@ -55,7 +55,7 @@ export const ChatCommunity = ({
       <input
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search community"
-        className="border-white/10"
+        className="input input-primary"
       />
       <div className="gap-y-2 mt-4">
         <p className="text-center text-sm text-muted-foreground hidden last:block p-2">

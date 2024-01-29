@@ -7,6 +7,7 @@ import { ChatCommunity } from "./chat-community";
 import { ChatForm } from "./chat-form";
 import { ChatList } from "./chat-list";
 import { useChat } from "@livekit/components-react";
+import { isBlockingUser } from "@/lib/block-service";
 interface ChatProps {
     hostName: string;
     hostIdentity: string;

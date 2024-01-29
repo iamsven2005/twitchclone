@@ -1,30 +1,34 @@
-import { getUserByUsername} from "@/lib/user-service";
-import {currentUser} from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
+
+import { getUserByUsername } from "@/lib/user-service";
 import { StreamPlayer } from "@/app/_components/streamplayer/stream-player";
-import { getRecommended } from "@/lib/recommend-service";
+
 interface CreatorPageProps {
-    params:{
-        username: string;
-    };
+  params: {
+    username: string;
+  };
 };
 
-const Creator = async({
-    params,
+const CreatorPage = async ({
+  params,
 }: CreatorPageProps) => {
-    const recommended = await getRecommended();
-    const externalUser = await currentUser();
-    const user = await getUserByUsername(params.username);
-    if (!user || user.externalUserId !== externalUser?.id || !user.stream){
-        throw new Error("Unauthorized")
-    }
-    return ( 
-        <div>
-            <StreamPlayer
-            user={user}
-            stream={user.stream}
-            isFollowing/>
-        </div>
-     );
+  const externalUser = await currentUser();
+  const user = await getUserByUsername(params.username);
+
+  if (!user || user.externalUserId !== externalUser?.id || !user.stream) {
+    throw new Error("Unauthorized");
+  }
+
+  return ( 
+    <div className="h-full">
+      <StreamPlayer
+        user={user}
+        stream={user.stream}
+        isFollowing
+        isBlocking={false}
+      />
+    </div>
+  );
 }
  
-export default Creator;
+export default CreatorPage;

@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { ChatInfo } from "./chat-info";
+import { isBlockingUser } from "@/lib/block-service";
+import { User } from "@clerk/nextjs/server";
 
 interface ChatFormProps {
   onSubmit: () => void;
@@ -56,17 +58,13 @@ export const ChatForm = ({
       className="flex flex-col items-center gap-y-4 p-3"
     >
       <div className="w-full">
-        <ChatInfo
-          isDelayed={isDelayed}
-          isFollowersOnly={isFollowersOnly}
-        />
         <input
           onChange={(e) => onChange(e.target.value)}
           value={value}
           disabled={isDisabled}
           placeholder="Send a message"
           className={cn(
-            "border-white/10",
+            "input input-primary",
             (isFollowersOnly || isDelayed) && "rounded-t-none border-t-0"
           )}
         />
