@@ -63,15 +63,17 @@ export const StreamPlayer = ({
             <Video
             hostName={user.username}
             hostIdentity={user.id}/>
-            <Chat
-            isFollowing={isFollowing}
-            viewerName={name}
-            hostName={user.username}
-            hostIdentity={user.id}
-            isChatEnabled={stream.isChatEnabled || isBlocking}
-            isChatDelayed={stream.isChatDelayed}
-            isChatFollowersOnly={stream.isChatFollowersOnly}
-            />
+            {!isBlocking && (
+              <Chat
+                isFollowing={isFollowing}
+                viewerName={name}
+                hostName={user.username}
+                hostIdentity={user.id}
+                isChatEnabled={stream.isChatEnabled || isBlocking}
+                isChatDelayed={stream.isChatDelayed}
+                isChatFollowersOnly={stream.isChatFollowersOnly}
+              />
+            )}
             <Header
                 hostName={user.username}
                 hostIdentity={user.id}

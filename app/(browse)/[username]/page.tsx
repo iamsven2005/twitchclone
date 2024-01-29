@@ -2,7 +2,7 @@ import { getUserByUsername } from "@/lib/user-service";
 import { notFound, redirect } from "next/navigation";
 import { isFollowingUser } from "@/lib/follow-service";
 // import { Flwbtn } from "@/app/_components/Users/Followbtn";
-import { isBlockingUser } from "@/lib/block-service";
+import { isBlockingByUser, isBlockingUser } from "@/lib/block-service";
 import { StreamPlayer } from "@/app/_components/streamplayer/stream-player";
 import { toast } from "sonner";
 interface UserPageProps {
@@ -21,21 +21,17 @@ const UserPage = async ({
   }
 
   const isFollowing = await isFollowingUser(user.id);
-  const isBlocked = await isBlockingUser(user.id);
+  const isBlocking = await isBlockingByUser(user.id);
 
-  if (isBlocked) {
-    return (
-      <div>
-        You have been blocked
-      </div>
-    );
+  if (isBlocking) {
+ notFound();
   } else {
     return (
       <StreamPlayer
         user={user}
         stream={user.stream}
         isFollowing={isFollowing}
-        isBlocking={isBlocked}
+        isBlocking={isBlocking}
       />
     );
   }
