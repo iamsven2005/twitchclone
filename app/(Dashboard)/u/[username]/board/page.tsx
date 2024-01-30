@@ -11,13 +11,20 @@ const BoardPage: React.FC = () => {
         }
     };
 
+    const closeModal = () => {
+        const dialogElement = document.getElementById('new_board') as HTMLDialogElement | null;
+        if (dialogElement) {
+            dialogElement.close();
+        }
+    };
+
     return (
         <div>
             <button className="btn" onClick={openModal}>Open Modal</button>
             <dialog id="new_board" className="modal">
                 <CreateOrganization />
                 <form method="dialog">
-                    <button className="btn" onClick={() => document.getElementById('new_board')?.close()}>Close</button>
+                    <button className="btn" onClick={closeModal}>Close</button>
                 </form>
             </dialog>
 
@@ -27,3 +34,4 @@ const BoardPage: React.FC = () => {
 }
 
 export default BoardPage;
+
