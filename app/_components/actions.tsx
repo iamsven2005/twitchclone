@@ -14,6 +14,7 @@ import {
 import { api } from "@/convex/_generated/api";
 import { useApiMutation } from "@/hooks/use-api-mutation";
 import { useRenameModal } from "./modals/use-rename-modal"; 
+import { useUser } from "@clerk/nextjs";
 
 interface ActionsProps {
   children: React.ReactNode;
@@ -32,7 +33,7 @@ export const Actions = ({
 }: ActionsProps) => {
   const { onOpen } = useRenameModal();
   const { mutate, pending } = useApiMutation(api.board.remove);
-
+  const {user} = useUser();
   const onCopyLink = () => {
     navigator.clipboard.writeText(
       `${window.location.origin}/board/${id}`,

@@ -17,6 +17,7 @@ const CreatorLayout = async({
         redirect("/")
     }
     return ( 
+
 <div className="drawer">
 <input type="checkbox" 
         value={self?.theme ?? "default"} // Use nullish coalescing operator
@@ -54,6 +55,7 @@ const CreatorLayout = async({
     </ul>
   </div>
 </div>
+
      );
 }
  

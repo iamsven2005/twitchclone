@@ -90,7 +90,7 @@ export const CreateBar = () =>{
         },
         {
             label:"New Board",
-            href: `/u/${user?.username}/board`,
+            href: `/board`,
             icon: Plus,
         },
     ];

@@ -1,37 +1,37 @@
-"use client"
-import { CreateOrganization } from "@clerk/nextjs";
-import { List } from "./_components/list";
-import React from "react";
+"use client";
 
-const BoardPage: React.FC = () => {
-    const openModal = () => {
-        const dialogElement = document.getElementById('new_board') as HTMLDialogElement | null;
-        if (dialogElement) {
-            dialogElement.showModal();
-        }
-    };
+import { useOrganization } from "@clerk/nextjs";
 
-    const closeModal = () => {
-        const dialogElement = document.getElementById('new_board') as HTMLDialogElement | null;
-        if (dialogElement) {
-            dialogElement.close();
-        }
-    };
+import { EmptyOrg } from "./_components/empty-org";
+import { BoardList } from "./_components/board-list";
+import BoardPage from "./_components/dashboard";
 
-    return (
-        <div>
-            <button className="btn" onClick={openModal}>Open Modal</button>
-            <dialog id="new_board" className="modal">
-                <CreateOrganization />
-                <form method="dialog">
-                    <button className="btn" onClick={closeModal}>Close</button>
-                </form>
-            </dialog>
+interface DashboardPageProps {
+  searchParams: {
+    search?: string;
+    favorites?: string;
+  };
+};
 
-            <List />
-        </div>
-    );
-}
+const DashboardPage = ({
+  searchParams,
+}: DashboardPageProps) => {
+  const { organization } = useOrganization();
 
-export default BoardPage;
+  return ( 
+    <div className="flex-1 h-[calc(100%-80px)] p-6">
+        <BoardPage/>
+      {!organization ? (
+        <EmptyOrg />
+      ) : (
+        <BoardList
+          orgId={organization.id}
+          query={searchParams}
+        />
+      )}
 
+    </div>
+   );
+};
+ 
+export default DashboardPage;
