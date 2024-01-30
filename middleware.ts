@@ -7,6 +7,8 @@ export default authMiddleware({
   "/api/uploadthing",
   "/:username",
   "/search",
+  "/board",
+  "/board/(.*)",
 ]
 });//unprotect
  

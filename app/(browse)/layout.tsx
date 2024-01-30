@@ -5,7 +5,6 @@ import {Actions} from "../_components/reuse/Actions";
 import { Recommends } from ".././_components/recommend"; 
 import { Container } from "../_components/reuse/Container";
 import { getUserByUsername } from "@/lib/user-service";
-import { notFound } from "next/navigation";
 interface BrowseLayoutProps {
   children: React.ReactNode;
 
