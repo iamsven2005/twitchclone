@@ -8,7 +8,7 @@ import { Poppins } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { api } from "@/convex/_generated/api";
-import { Actions } from "@/components/actions";
+import { Actions } from "@/app/_components/actions";
 import { Id } from "@/convex/_generated/dataModel";
 import { useRenameModal } from "@/app/_components/modals/use-rename-modal"; 
 

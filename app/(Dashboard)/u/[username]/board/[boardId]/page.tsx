@@ -1,4 +1,4 @@
-import { Room } from "@/components/room";
+import { Room } from "@/app/_components/room"; 
 
 import { Canvas } from "./_components/canvas";
 import { Loading } from "./_components/loading";
