@@ -5,13 +5,14 @@ const BoardPage = () => {
 
     return (
         <div>
-        <button className="btn" onClick={()=>document.getElementById('new_board').showModal()}>Add New</button>
         <dialog id="new_board" className="modal">
             <CreateOrganization />
             <form method="dialog" className="modal-backdrop">
                 <button>close</button>
             </form>
         </dialog>
+        <button className="btn" onClick={()=>document.getElementById('new_board').showModal()}>open modal</button>
+
         <List/>
         </div>
    
