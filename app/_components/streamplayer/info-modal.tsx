@@ -11,7 +11,7 @@ import { UploadDropzone } from "@/lib/uploadthing";
 interface InfoModalProps {
   initialName: string;
   initialThumbnailUrl: string | null;
-};
+}
 
 export const InfoModal = ({
   initialName,
@@ -24,6 +24,13 @@ export const InfoModal = ({
   const [name, setName] = useState(initialName);
   const [thumbnailUrl, setThumbnailUrl] = useState(initialThumbnailUrl);
 
+  const openModal = () => {
+    const infoModal = document.getElementById('infomodal') as HTMLDialogElement | null;
+    if (infoModal) {
+      infoModal.showModal();
+    }
+  };
+
   const onRemove = () => {
     startTransition(() => {
       updateStream({ thumbnailUrl: null })
@@ -34,7 +41,7 @@ export const InfoModal = ({
         })
         .catch(() => toast.error("Something went wrong"));
     });
-  }
+  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,18 +54,18 @@ export const InfoModal = ({
         })
         .catch(() => toast.error("Something went wrong"))
     });
-  }
+  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
+
   return (
     <div>
-        <button className="btn btn-link"
-        onClick={()=>document.getElementById('infomodal').showModal()}
-        >Edit
-        </button>
+      <button className="btn btn-link" onClick={openModal}>
+        Edit
+      </button>
       <dialog id="infomodal" className="modal">
       <div className="modal-box">
             <h3 className="font-bold text-lg">
