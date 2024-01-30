@@ -6,7 +6,7 @@ import { updateUser } from "@/lib/user";
 
 interface BioModalProps {
   initialValue: string | null;
-};
+}
 
 export const BioModal = ({
   initialValue,
@@ -15,6 +15,13 @@ export const BioModal = ({
 
   const [isPending, startTransition] = useTransition();
   const [value, setValue] = useState(initialValue || "");
+
+  const openModal = () => {
+    const bioModal = document.getElementById('bio') as HTMLDialogElement | null;
+    if (bioModal) {
+      bioModal.showModal();
+    }
+  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,39 +34,38 @@ export const BioModal = ({
         })
         .catch(() => toast.error("Something went wrong"));
     });
-  }
+  };
 
   return (
     <div>
-        <button className="btn"
-         onClick={()=>document.getElementById('bio').showModal()}>
-            Edit Bio
-        </button>
+      <button className="btn" onClick={openModal}>
+        Edit Bio
+      </button>
       <dialog id="bio" className="modal">
-      <div className="modal-box">
-        <h3 className="font-bold text-lg">Edit user bio</h3>
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">Edit user bio</h3>
 
-        <form onSubmit={onSubmit}>
-          <textarea 
-            placeholder="User bio"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
-            disabled={isPending}
-            className="textarea textarea-primary"
-          />
-          <div className="modal-action">
-            <form method="dialog">
-            <button className="btn">Close</button>
-            </form>
-            <button
+          <form onSubmit={onSubmit}>
+            <textarea 
+              placeholder="User bio"
+              onChange={(e) => setValue(e.target.value)}
+              value={value}
               disabled={isPending}
-              type="submit"
-              className="btn"
-            >
-              Save
-            </button>
-          </div>
-        </form>
+              className="textarea textarea-primary"
+            />
+            <div className="modal-action">
+              <form method="dialog">
+                <button className="btn">Close</button>
+              </form>
+              <button
+                disabled={isPending}
+                type="submit"
+                className="btn"
+              >
+                Save
+              </button>
+            </div>
+          </form>
         </div>
       </dialog>
     </div>
