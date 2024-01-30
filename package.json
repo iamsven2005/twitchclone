@@ -12,6 +12,9 @@
   "dependencies": {
     "@clerk/clerk-sdk-node": "^4.13.4",
     "@clerk/nextjs": "^4.29.3",
+    "@liveblocks/client": "^1.9.7",
+    "@liveblocks/node": "^1.9.7",
+    "@liveblocks/react": "^1.9.7",
     "@livekit/components-react": "^1.5.3",
     "@livekit/components-styles": "^1.0.9",
     "@prisma/client": "^5.8.0",
