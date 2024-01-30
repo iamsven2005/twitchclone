@@ -5,16 +5,22 @@ import {Actions} from "../_components/reuse/Actions";
 import { Recommends } from ".././_components/recommend"; 
 import { Container } from "../_components/reuse/Container";
 import { getUserByUsername } from "@/lib/user-service";
+import { notFound } from "next/navigation";
 interface BrowseLayoutProps {
   children: React.ReactNode;
 
 }
 
 const BrowseLayout = async ({ children }: BrowseLayoutProps) => {
-  const params = await currentUser() || null;
-  let self = null; // Declare self outside the if block
+  const params = await currentUser();
 
-  if (params !== null) {
+  if (!params) {
+    return null;
+  }
+
+  let self = null;
+
+  if (params.username) {
     self = await getUserByUsername(params.username);
   }
 

@@ -10,6 +10,7 @@ export const getUserByUsername = async (username: string) => {
         username: true,
         bio: true,
         imageUrl: true,
+        theme: true,
         stream: {
           select: {
             id: true,
