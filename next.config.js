@@ -4,6 +4,13 @@ const nextConfig = {
         domains:[
             "utfs.io",
         ],
+        remotePatterns:[
+            {
+                protocol:"https",
+                hostname:"img.clerk.com"
+
+            }
+        ]
     },
     webpack: (config) => {
         config.module.rules.push({

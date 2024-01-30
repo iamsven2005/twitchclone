@@ -7,7 +7,9 @@ import {
     KeyRound, 
     MessageSquare, 
     Settings, 
-    Users } from "lucide-react"
+    Users,
+    Plus
+ } from "lucide-react"
 import { NavItem } from './reuse/nav-item';
 export const Logo3 = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -85,6 +87,11 @@ export const CreateBar = () =>{
             label:"Settings",
             href: `/u/${user?.username}/settings`,
             icon: Settings,
+        },
+        {
+            label:"New Board",
+            href: `/u/${user?.username}/board`,
+            icon: Plus,
         },
     ];
     return (
