@@ -2,9 +2,21 @@
 
 import { FormEventHandler, useEffect, useState } from "react";
 import { toast } from "sonner";
-import { useRenameModal } from "./use-rename-modal"; 
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogClose,
+  DialogFooter,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useRenameModal } from "./use-rename-modal";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useApiMutation } from "@/hooks/use-api-mutation";
-import { api } from "@/convex/_generated/api"; 
+import { api } from "@/convex/_generated/api";
 
 export const RenameModal = () => {
   const { 
@@ -41,31 +53,37 @@ export const RenameModal = () => {
   };
 
   return (
-    <dialog id="rename_modal" className="modal">
-      <div className="modal-box">
-      <h3 className="font-bold text-lg">Edit board title</h3>
-      <p className="py-4">Enter a new title for this board</p>
-
-            <div className="modal-action">
-            <form method="dialog">
-                <button className="btn">Close</button>
-            </form>
-            <form onSubmit={onSubmit} className="space-y-4">
-          <input
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>
+            Edit board title
+          </DialogTitle>
+        </DialogHeader>
+        <DialogDescription>
+          Enter a new title for this board
+        </DialogDescription>
+        <form onSubmit={onSubmit} className="space-y-4">
+          <Input
             disabled={pending}
             required
             maxLength={60}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Board title"
-            className="input"
           />
-            <button disabled={pending} type="submit">
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button disabled={pending} type="submit">
               Save
-            </button>
-            </form>
-            </div>
-      </div>
-    </dialog>
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };
