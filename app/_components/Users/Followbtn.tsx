@@ -3,11 +3,13 @@ import { onBlock, onUnblock } from "@/lib/block";
 import { onFollow, onUnfollow } from "@/lib/follow";
 import { useTransition, useState } from "react";
 import { toast } from "sonner";
+
 interface FlwbtnProps {
     isFollowing: boolean;
     isBlocking: boolean;
     userId: string;
-};
+}
+
 export const Flwbtn = ({
     isFollowing,
     isBlocking,
@@ -16,21 +18,22 @@ export const Flwbtn = ({
     const [isPending, startTransition] = useTransition();
     const [blockReason, setBlockReason] = useState('');
 
-
     const handleFollow = () => {
-        startTransition(()=> {
+        startTransition(() => {
             onFollow(userId)
-            .then((data)=> toast.success(`You are now following ${data.following.username}`))
-            .catch(()=> toast.error("Something Went Wrong"));
+                .then((data) => toast.success(`You are now following ${data.following.username}`))
+                .catch(() => toast.error("Something Went Wrong"));
         });
     };
+
     const handleUnFollow = () => {
-        startTransition(()=> {
+        startTransition(() => {
             onUnfollow(userId)
-            .then((data)=> toast.success(`You have unfollowed ${data.following.username}`))
-            .catch(()=> toast.error("Something Went Wrong"));
+                .then((data) => toast.success(`You have unfollowed ${data.following.username}`))
+                .catch(() => toast.error("Something Went Wrong"));
         });
     };
+
     const onfollow = () => {
         if (isFollowing) {
             handleUnFollow();
@@ -38,18 +41,20 @@ export const Flwbtn = ({
             handleFollow();
         }
     };
+
     const handleBlock = () => {
-        startTransition(()=> {
+        startTransition(() => {
             onBlock(userId)
-            .then((data)=> toast.success(`You are now Blocking ${data.blocked.username}`))
-            .catch(()=> toast.error("Something Went Wrong"));
+                .then((data) => toast.success(`You are now Blocking ${data?.blocked.username}`))
+                .catch(() => toast.error("Something Went Wrong"));
         });
     };
+
     const handleUnBlock = () => {
         startTransition(() => {
             onUnblock(userId)
                 .then((data) => {
-                    if (data?.blocked?.username) {
+                    if (data && data.blocked && data.blocked.username) {
                         toast.success(`You have unBlocked ${data.blocked.username}`);
                     } else {
                         toast.error("Something Went Wrong");
@@ -58,7 +63,7 @@ export const Flwbtn = ({
                 .catch(() => toast.error("Something Went Wrong"));
         });
     };
-    
+
     const onblock = () => {
         if (isBlocking) {
             handleUnBlock();
