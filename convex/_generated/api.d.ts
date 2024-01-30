@@ -14,7 +14,8 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-
+import type * as board from "../board.js";
+import type * as boards from "../boards.js";
 /**
  * A utility for referencing Convex functions in your app's API.
  *
@@ -23,11 +24,15 @@ import type {
  * const myFunctionReference = api.myModule.myFunction;
  * ```
  */
-declare const fullApi: ApiFromModules<{}>;
+declare const fullApi: ApiFromModules<{
+  board: typeof board;
+  boards: typeof boards;
+}>;
 export declare const api: FilterApi<
   typeof fullApi,
   FunctionReference<any, "public">
 >;
+
 export declare const internal: FilterApi<
   typeof fullApi,
   FunctionReference<any, "internal">

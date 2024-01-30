@@ -1,4 +1,14 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.httpAction = exports.internalAction = exports.action = exports.internalMutation = exports.mutation = exports.internalQuery = exports.query = void 0;
+
+var _server = require("convex/server");
+
 /* eslint-disable */
+
 /**
  * Generated utilities for implementing server-side Convex query and mutation functions.
  *
@@ -9,16 +19,6 @@
  * @module
  */
 
-import {
-  actionGeneric,
-  httpActionGeneric,
-  queryGeneric,
-  mutationGeneric,
-  internalActionGeneric,
-  internalMutationGeneric,
-  internalQueryGeneric,
-} from "convex/server";
-
 /**
  * Define a query in this Convex app's public API.
  *
@@ -27,8 +27,7 @@ import {
  * @param func - The query function. It receives a {@link QueryCtx} as its first argument.
  * @returns The wrapped query. Include this as an `export` to name it and make it accessible.
  */
-export const query = queryGeneric;
-
+var query = _server.queryGeneric;
 /**
  * Define a query that is only accessible from other Convex functions (but not from the client).
  *
@@ -37,8 +36,9 @@ export const query = queryGeneric;
  * @param func - The query function. It receives a {@link QueryCtx} as its first argument.
  * @returns The wrapped query. Include this as an `export` to name it and make it accessible.
  */
-export const internalQuery = internalQueryGeneric;
 
+exports.query = query;
+var internalQuery = _server.internalQueryGeneric;
 /**
  * Define a mutation in this Convex app's public API.
  *
@@ -47,8 +47,9 @@ export const internalQuery = internalQueryGeneric;
  * @param func - The mutation function. It receives a {@link MutationCtx} as its first argument.
  * @returns The wrapped mutation. Include this as an `export` to name it and make it accessible.
  */
-export const mutation = mutationGeneric;
 
+exports.internalQuery = internalQuery;
+var mutation = _server.mutationGeneric;
 /**
  * Define a mutation that is only accessible from other Convex functions (but not from the client).
  *
@@ -57,8 +58,9 @@ export const mutation = mutationGeneric;
  * @param func - The mutation function. It receives a {@link MutationCtx} as its first argument.
  * @returns The wrapped mutation. Include this as an `export` to name it and make it accessible.
  */
-export const internalMutation = internalMutationGeneric;
 
+exports.mutation = mutation;
+var internalMutation = _server.internalMutationGeneric;
 /**
  * Define an action in this Convex app's public API.
  *
@@ -70,16 +72,18 @@ export const internalMutation = internalMutationGeneric;
  * @param func - The action. It receives an {@link ActionCtx} as its first argument.
  * @returns The wrapped action. Include this as an `export` to name it and make it accessible.
  */
-export const action = actionGeneric;
 
+exports.internalMutation = internalMutation;
+var action = _server.actionGeneric;
 /**
  * Define an action that is only accessible from other Convex functions (but not from the client).
  *
  * @param func - The function. It receives an {@link ActionCtx} as its first argument.
  * @returns The wrapped function. Include this as an `export` to name it and make it accessible.
  */
-export const internalAction = internalActionGeneric;
 
+exports.action = action;
+var internalAction = _server.internalActionGeneric;
 /**
  * Define a Convex HTTP action.
  *
@@ -87,4 +91,7 @@ export const internalAction = internalActionGeneric;
  * as its second.
  * @returns The wrapped endpoint function. Route a URL path to this function in `convex/http.js`.
  */
-export const httpAction = httpActionGeneric;
+
+exports.internalAction = internalAction;
+var httpAction = _server.httpActionGeneric;
+exports.httpAction = httpAction;
