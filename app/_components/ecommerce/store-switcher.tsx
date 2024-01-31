@@ -48,7 +48,7 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={setOpen} >
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -63,7 +63,7 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
           <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-[200px] p-0 bg-black">
         <Command>
           <CommandList>
             <CommandInput placeholder="Search store..." />

@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 
 import StoreSwitcher from "./store-switcher"; 
 import { MainNav } from "./main-nav";
-import { ThemeToggle } from "./theme-toggle"; 
 import { db as prismadb } from "@/lib/db";
 const Navbar = async () => {
   const { userId } = auth();
@@ -24,7 +23,6 @@ const Navbar = async () => {
         <StoreSwitcher items={stores} />
         <MainNav className="mx-6" />
         <div className="ml-auto flex items-center space-x-4">
-          <ThemeToggle />
           <UserButton afterSignOutUrl="/" />
         </div>
       </div>

@@ -32,7 +32,7 @@ export const updateStream = async (values: Partial<Stream>) => {
         });
         revalidatePath(`/u/${self.username}/chat`)
         revalidatePath(`/u/${self.username}`)
-        revalidatePath(`/${self.username}`)
+        revalidatePath(`/view/${self.username}`)
         return stream;
     } catch {
         throw new Error("Error at stream update")

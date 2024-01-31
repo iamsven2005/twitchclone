@@ -23,8 +23,10 @@ export const Modal: React.FC<ModalProps> = ({
     }
   };
 
-  return ( 
+  return (
     <Dialog open={isOpen} onOpenChange={onChange}>
+          <div className="bg-base-200">
+
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
@@ -36,6 +38,8 @@ export const Modal: React.FC<ModalProps> = ({
           {children}
         </div>
       </DialogContent>
+    </div>
     </Dialog>
+
   );
 };

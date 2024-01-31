@@ -19,7 +19,7 @@ export const ResultCard = ({
     data,
 }: ResultCardProps) => {
     return (
-        <Link href={`/${data.user.username}`}>
+        <Link href={`/view/${data.user.username}`}>
             <div className="w-full flex gap-x-4">
                 <div className="relative h-[9rem] w-[16rem]">
                     <Thumbnail

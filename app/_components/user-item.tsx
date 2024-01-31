@@ -11,7 +11,7 @@ export const UserItem = ({
     isLive,
 }: UserItemProps) => {
     const pathname = usePathname();
-    const href = `/${username}`;
+    const href = `/view/${username}`;
     const isActive = pathname === href;
     return(
         <a href={href} className="btn btn-ghost" >

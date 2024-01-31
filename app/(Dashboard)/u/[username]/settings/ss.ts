@@ -16,7 +16,7 @@ export const updatetheme = async (values: string) => {
         });
         revalidatePath(`/u/${self.username}/chat`)
         revalidatePath(`/u/${self.username}`)
-        revalidatePath(`/${self.username}`)
+        revalidatePath(`/view/${self.username}`)
         return stream;
     } catch {
         throw new Error("Error at theme update")
