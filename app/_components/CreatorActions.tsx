@@ -8,7 +8,8 @@ import {
     MessageSquare, 
     Settings, 
     Users,
-    Plus
+    Plus,
+    Store
  } from "lucide-react"
 import { NavItem } from './reuse/nav-item';
 export const Logo3 = () => {
@@ -92,6 +93,11 @@ export const CreateBar = () =>{
             label:"New Board",
             href: `/board`,
             icon: Plus,
+        },
+        {
+            label:"Manage Shop",
+            href: `/store`,
+            icon: Store,
         },
     ];
     return (
