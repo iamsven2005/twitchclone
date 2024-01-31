@@ -78,7 +78,7 @@ export const RenameModal = () => {
                 Cancel
               </Button>
             </DialogClose>
-            <Button disabled={pending} type="submit">
+            <Button disabled={pending} type="submit" variant="outline">
               Save
             </Button>
           </DialogFooter>

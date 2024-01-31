@@ -3,12 +3,11 @@ export default authMiddleware({
   publicRoutes: 
 
   ["/api/webhooks(.*)",
-  "/",
   "/api/uploadthing",
-  "/:username",
-  "/search",
-  "/board",
-  "/board/(.*)",
+  "/Shop",
+  "/sign-in",
+  "/sign-up",
+  "/api/:path*",
 ]
 });//unprotect
  

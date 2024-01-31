@@ -57,7 +57,7 @@ export const Actions = ({
         onClick={(e) => e.stopPropagation()}
         side={side}
         sideOffset={sideOffset}
-        className="w-60"
+        className="w-60 bg-base-300"
       >
         <DropdownMenuItem
           onClick={onCopyLink}
@@ -80,7 +80,7 @@ export const Actions = ({
           onConfirm={onDelete}
         >
           <button
-            className="btn btn-ghost"
+            className="btn btn-ghost text-primary"
           >
             <Trash2 className="h-4 w-4 mr-2" />
             Delete

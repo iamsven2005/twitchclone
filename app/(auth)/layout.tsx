@@ -1,4 +1,7 @@
+"use client"
+import { Unauthenticated } from "convex/react";
 import { Logo } from "../_components/reuse/logo";
+import Link from "next/link";
 const AuthLayout = ({
     children
 }: {
@@ -10,9 +13,14 @@ const AuthLayout = ({
         <div className="max-w-md ">   
         <Logo/>    
         {children}
+        <Link href="/Shop"className="btn">
+         Visit shop   
+        </Link>
         </div>
         </div>
-        </div> 
+        </div>
+
+
      );
 }
 export default AuthLayout;

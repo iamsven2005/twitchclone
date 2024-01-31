@@ -22,11 +22,11 @@ const BoardPage: React.FC = () => {
     return (
         <div>
             <Navbar/>
-            <button className="btn" onClick={openModal}>Open Modal</button>
+            <button className="btn" onClick={openModal}>Add New Organization</button>
             <dialog id="new_board" className="modal">
                 <CreateOrganization />
                 <form method="dialog">
-                    <button className="btn" onClick={closeModal}>Close</button>
+                    <button className="btn btn-primary" onClick={closeModal}>Close</button>
                 </form>
             </dialog>
 

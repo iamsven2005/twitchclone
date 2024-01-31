@@ -3,7 +3,10 @@
 import Link from "next/link";
 const ErrorPage = () => {
   return ( 
-    <div className="h-full flex flex-col space-y-4 items-center justify-center text-muted-foreground">
+<div className="hero min-h-screen bg-base-200">
+  <div className="hero-content text-center">
+    <div className="max-w-md">
+      <h1 className="text-5xl font-bold">Error</h1>
       <p>
         Something went wrong
       </p>
@@ -13,6 +16,8 @@ const ErrorPage = () => {
         </Link>
       </button>
     </div>
+  </div>
+</div>      
   );
 };
  
