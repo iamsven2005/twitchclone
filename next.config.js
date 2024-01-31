@@ -3,6 +3,7 @@ const nextConfig = {
     images:{
         domains:[
             "utfs.io",
+            "res.cloudinary.com",
         ],
         remotePatterns:[
             {

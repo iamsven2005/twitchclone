@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useStoreModal } from "@/hooks/use-store-modal";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -34,7 +35,7 @@ export const StoreModal = () => {
     try {
       setLoading(true);
       const response = await axios.post('/api/stores', values);
-      window.location.assign(`/${response.data.id}`);
+      window.location.assign(`/store/${response.data.id}`);
     } catch (error) {
       toast.error('Something went wrong');
     } finally {
@@ -69,7 +70,9 @@ export const StoreModal = () => {
                 />
                 <div className="pt-6 space-x-2 flex items-center justify-end w-full">
                   <Button disabled={loading} variant="outline" onClick={storeModal.onClose}>
+                  <Link href="/">
                     Cancel
+                  </Link>
                   </Button>
                   <Button disabled={loading} type="submit">Continue</Button>
                 </div>
