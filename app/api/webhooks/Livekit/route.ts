@@ -9,7 +9,7 @@ const receiver = new WebhookReceiver(
 );
 
 // Function to delay execution
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function POST(req: Request) {
   const body = await req.text();
