@@ -1,5 +1,3 @@
-# (C) Stefan John / Stenway / Stenway.com / 2023
-
 import json
 import os
 
