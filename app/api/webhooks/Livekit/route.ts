@@ -8,6 +8,9 @@ const receiver = new WebhookReceiver(
   process.env.LIVEKIT_API_SECRET!
 );
 
+// Function to delay execution
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export async function POST(req: Request) {
   const body = await req.text();
   const headerPayload = headers();
@@ -28,6 +31,7 @@ export async function POST(req: Request) {
         isLive: true,
       },
     });
+    await delay(1000); // Delay for 1 second (adjust as needed)
     return new Response("Ingress started", { status: 200 });
   }
 
@@ -40,9 +44,11 @@ export async function POST(req: Request) {
         isLive: false,
       },
     });
+    await delay(1000); // Delay for 1 second (adjust as needed)
     return new Response("Ingress ended", { status: 200 });
   }
 
   // Default response when no matching event is found
+  await delay(1000); // Delay for 1 second (adjust as needed)
   return new Response("Unknown event", { status: 400 });
 }
