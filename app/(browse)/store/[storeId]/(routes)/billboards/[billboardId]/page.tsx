@@ -20,4 +20,4 @@ const BillboardPage = async ({
     </div>
   );
 }
-export default BillboardPage;
+export default BillboardPage; 
