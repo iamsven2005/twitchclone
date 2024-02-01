@@ -2,10 +2,14 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   publicRoutes: 
 
-  ["/Shop",
-  "/sign-in",
-  "/sign-up",
-  "/api/:path*",
+  [
+    "/api/webhooks(.*)",
+    "/api/uploadthing",
+    "/Shop",
+    "/sign-in",
+    "/sign-up",
+    "/api/:path*",
+
 ]
 });//unprotect
  
