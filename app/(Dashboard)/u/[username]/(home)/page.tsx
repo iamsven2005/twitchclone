@@ -9,12 +9,10 @@ interface CreatorPageProps {
   params: {
     username: string;
   };
-  items: any
 };
 
 const CreatorPage = async ({
   params,
-  items,
 }: CreatorPageProps) => {
   const externalUser = await currentUser();
   const user = await getUserByUsername(params.username);
@@ -41,7 +39,7 @@ const CreatorPage = async ({
         stream={user.stream}
         isFollowing
         isBlocking={false}
-        items={items}
+        items={stores}
       />
     </div>
   );
