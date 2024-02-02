@@ -31,6 +31,9 @@ const UserPage = async ({
       userId,
     }
   });
+  if(!stores){
+    return null;
+  }
 
   const isFollowing = await isFollowingUser(user.id);
   const isBlocking = await isBlockingByUser(user.id);
