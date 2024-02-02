@@ -2,29 +2,35 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Category } from "../actions/types";
+import NavbarActions from "./navbar-actions";
 
 interface MainNavProps {
   data: Category[];
+  store: string;
 }
 
-const MainNav: React.FC<MainNavProps> = ({ data }) => {
+const MainNav: React.FC<MainNavProps> = ({ data,store }) => {
   const pathname = usePathname();
   
   const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
+    href: `${store}/category/${route.id}`,
     label: route.name,
-    active: pathname === `/category/${route.id}`,
+    active: pathname === `${store}/category/${route.id}`,
   }));
 
   return (
     <nav className="navbar bg-slate-100">
+      <NavbarActions/>
+
       {routes.map((route) => (
-        <Link key={route.href} href={route.href}>
-          <a className={`btn btn-link ${route.active ? 'active' : ''}`}>
+        <Link 
+        key={route.href} 
+        href={route.href}
+        className={`btn btn-link ${route.active ? 'active' : ''}`}>
             {route.label}
-          </a>
         </Link>
       ))}
+
     </nav>
   );
 };

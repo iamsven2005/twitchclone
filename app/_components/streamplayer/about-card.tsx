@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react";
 import { BioModal } from "./bio-modal";
+import StoreSwitcher from "../ecommerce/view-store";
 
 interface AboutCardProps {
   hostName: string;
@@ -9,6 +10,7 @@ interface AboutCardProps {
   viewerIdentity: string;
   bio: string | null;
   followedByCount: number;
+  items: Record<string, any>[];
 };
 
 export const AboutCard = ({
@@ -17,6 +19,7 @@ export const AboutCard = ({
   viewerIdentity,
   bio,
   followedByCount,
+  items,
 }: AboutCardProps) => {
   const hostAsViewer = `host-${hostIdentity}`;
   const isHost = viewerIdentity === hostAsViewer;
@@ -37,6 +40,8 @@ export const AboutCard = ({
             <BioModal initialValue={bio} />
           )}
         </div>
+        <StoreSwitcher User={hostName} items={items} />
+
         <div className="text-sm text-muted-foreground">
           <span className="font-semibold text-primary">
             {followedByCount}

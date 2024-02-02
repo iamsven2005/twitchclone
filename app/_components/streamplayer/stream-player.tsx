@@ -17,6 +17,7 @@ type CustomStream = {
     isLive: boolean;
     thumbnailUrl: string | null;
     name: string;
+
   };
   
   type CustomUser = {
@@ -32,12 +33,15 @@ type CustomStream = {
     stream: CustomStream;
     isFollowing: boolean;
     isBlocking: boolean;
+    items: Record<string, any>[];
+
   }
 export const StreamPlayer = ({
     user,
     stream,
     isFollowing,
     isBlocking,
+    items,
 }:StreamPlayerProps) => {
     const {
         token,
@@ -90,6 +94,7 @@ export const StreamPlayer = ({
             thumbnailUrl={stream.thumbnailUrl}
           />
           <AboutCard
+            items={items}
             hostName={user.username}
             hostIdentity={user.id}
             viewerIdentity={identity}

@@ -26,11 +26,13 @@ type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
 interface StoreSwitcherProps extends PopoverTriggerProps {
   items: Record<string, any>[];
+  User: string;
 }
 
 export default function StoreSwitcher({ 
-  className, 
-  items = [],
+    className, 
+    items = [],
+    User,
  }: StoreSwitcherProps) {
   const storeModal = useStoreModal();
   const params = useParams();
@@ -47,11 +49,11 @@ export default function StoreSwitcher({
 
   const onStoreSelect = (store: { value: string, label: string }) => {
     setOpen(false);
-    router.push(`/store/${store.value}`);
+    router.push(`/view/${User}/${store.value}`);
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen} >
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -62,7 +64,7 @@ export default function StoreSwitcher({
           className={cn("w-[200px] justify-between", className)}
         >
           <Store className="mr-2 h-4 w-4" />
-          {currentStore?.label}
+          View Stores
           <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -90,20 +92,6 @@ export default function StoreSwitcher({
                   />
                 </CommandItem>
               ))}
-            </CommandGroup>
-          </CommandList>
-          <CommandSeparator />
-          <CommandList>
-            <CommandGroup>
-              <CommandItem
-                onSelect={() => {
-                  setOpen(false)
-                  storeModal.onOpen()
-                }}
-              >
-                <PlusCircle className="mr-2 h-5 w-5" />
-                Create Store
-              </CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>
