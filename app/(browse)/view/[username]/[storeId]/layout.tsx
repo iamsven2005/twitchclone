@@ -6,18 +6,15 @@ import getCategories from './components/get/get-categories';
 import getbillboards from './components/get/get-billboards';
 import getProduct from './components/get/get-products';
 import NoResults from './components/noresults';
-import Image from 'next/image';
 import { formatter } from '@/lib/utils';
 import Link from 'next/link';
 
 export default async function DashboardLayout({
   children,
   params,
-  req,
 }: {
   children: React.ReactNode
   params: { storeId: string }
-  req: any;
 }) {
   const { userId } = auth();
 
