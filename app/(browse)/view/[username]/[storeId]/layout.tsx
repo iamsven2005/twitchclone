@@ -48,7 +48,7 @@ export default async function DashboardLayout({
     <div className="carousel w-full">
 
     {Billboard.map((route) => (
-        <div id="item1" className="carousel-item w-full ">
+        <div key={route.id} className="carousel-item w-full ">
           <div style={{backgroundImage: `url(${route.imageUrl})`}} className="rounded-xl hero-content w-full text-center h-100 bg-no-repeat"><h1 className="text-5xl font-bold">{route.label}</h1></div>
         </div> 
       ))}     
@@ -62,7 +62,7 @@ export default async function DashboardLayout({
         <div key={route.id} className="card w-96 bg-primary-100 shadow-xl">
         <figure className="carousel rounded-box">
         {route.images.map((image)=>(
-          <div className="carousel-item w-full">
+          <div key={image.id} className="carousel-item w-full">
           <img src={image.url}/>
           </div>
         ))}
