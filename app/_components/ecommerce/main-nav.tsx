@@ -53,6 +53,11 @@ export function MainNav({
       label: 'Settings',
       active: pathname === `/store/${params.storeId}/settings`,
     },
+    {
+      href: `/store/${params.storeId}/studio`,
+      label: 'Design Studio',
+      active: pathname === `/store/${params.storeId}/studio`,
+    },
   ]
 
   return (
