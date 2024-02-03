@@ -5,7 +5,6 @@ import { isFollowingUser } from "@/lib/follow-service";
 import { isBlockingByUser, isBlockingUser } from "@/lib/block-service";
 import { StreamPlayer } from "@/app/_components/streamplayer/stream-player";
 import { db } from "@/lib/db";
-import StoreSwitcher from "@/app/_components/ecommerce/view-store";
 import { auth } from "@clerk/nextjs";
 interface UserPageProps {
   params: {
@@ -16,15 +15,16 @@ interface UserPageProps {
 const UserPage = async ({
   params
 }: UserPageProps) => {
-  const { userId } = auth();
-  if (!userId) {
-    redirect('/sign-in');
-  }
 
   const user = await getUserByUsername(params.username);
 
+
   if (!user || !user.stream) {
     notFound();
+  }
+  const userId = user.externalUserId
+  if (!userId) {
+    redirect('/sign-in');
   }
   const stores = await db.store.findMany({
     where: {
@@ -51,7 +51,6 @@ const UserPage = async ({
         isBlocking={isBlocking}
         items={stores}
       />
-
       </div>
 
       );

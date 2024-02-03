@@ -18,17 +18,18 @@ export interface Product {
     color: Color;
     images: Image[];
 }
-export interface Color {
+export interface Image{
     id: string;
-    name: string;
-    value: string;
+    url: string;
 }
 export interface Size {
     id: string;
     name: string;
     value: string;
 }
-export interface Image{
+export interface Color {
     id: string;
-    url: string;
+    name: string;
+    value: string;
 }
+

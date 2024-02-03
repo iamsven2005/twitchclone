@@ -13,25 +13,25 @@ const MainNav: React.FC<MainNavProps> = ({ data,store }) => {
   const pathname = usePathname();
   
   const routes = data.map((route) => ({
-    href: `${store}/category/${route.id}`,
+    href: `/shop/${store}/category/${route.id}`,
     label: route.name,
-    active: pathname === `${store}/category/${route.id}`,
+    active: pathname === `/shop/${store}/category/${route.id}`,
   }));
 
   return (
     <nav className="navbar bg-slate-100">
-      <NavbarActions/>
+    <NavbarActions/>
 
-      {routes.map((route) => (
-        <Link 
-        key={route.href} 
-        href={route.href}
-        className={`btn btn-link ${route.active ? 'active' : ''}`}>
-            {route.label}
-        </Link>
-      ))}
-
+    {routes.map((route) => (
+      <Link 
+      key={route.href} 
+      href={route.href}
+      className={`btn btn-link ${route.active ? 'active' : ''}`}>
+          {route.label}
+      </Link>
+    ))}
     </nav>
+
   );
 };
 

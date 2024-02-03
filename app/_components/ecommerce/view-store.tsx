@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown, PlusCircle, Store } from "lucide-react"
+import { ChevronsUpDown, Store } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -43,13 +43,12 @@ export default function StoreSwitcher({
     value: item.id
   }));
 
-  const currentStore = formattedItems.find((item) => item.value === params.storeId);
 
   const [open, setOpen] = React.useState(false)
 
   const onStoreSelect = (store: { value: string, label: string }) => {
     setOpen(false);
-    router.push(`/view/${User}/${store.value}`);
+    router.push(`/shop/${store.value}`);
   };
 
   return (
@@ -82,14 +81,6 @@ export default function StoreSwitcher({
                 >
                   <Store className="mr-2 h-4 w-4" />
                   {store.label}
-                  <Check
-                    className={cn(
-                      "ml-auto h-4 w-4",
-                      currentStore?.value === store.value
-                        ? "opacity-100"
-                        : "opacity-0"
-                    )}
-                  />
                 </CommandItem>
               ))}
             </CommandGroup>

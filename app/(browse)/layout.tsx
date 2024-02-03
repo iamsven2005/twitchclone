@@ -2,7 +2,7 @@ import {UserButton, currentUser} from "@clerk/nextjs"
 import {Logo2} from "../_components/reuse/logo2";
 import {Search} from "../_components/reuse/search";
 import {Actions} from "../_components/reuse/Actions";
-import { Recommends } from ".././_components/recommend"; 
+import { Recommends } from "../_components/recommend"; 
 import { Container } from "../_components/reuse/Container";
 import { getUserByUsername } from "@/lib/user-service";
 interface BrowseLayoutProps {

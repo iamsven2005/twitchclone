@@ -5,7 +5,8 @@ export default authMiddleware({
   [
     "/api/webhooks(.*)",
     "/api/uploadthing",
-    "/Shop",
+    "/shop",
+    "/shop/:path*",
     "/sign-in",
     "/sign-up",
     "/api/:path*",

@@ -7,7 +7,7 @@ interface Query {
   isFeatured?: boolean;
 
 }
-const getProduct = async (query: Query, baseURL: string, store: string): Promise<Product[]> => {
+const getProducts = async (query: Query, baseURL: string, store: string): Promise<Product[]> => {
   const STORE_URL = `${baseURL}/api/${store}/products`;
   const newurl = qs.stringifyUrl({
     url: STORE_URL,
@@ -23,4 +23,4 @@ const getProduct = async (query: Query, baseURL: string, store: string): Promise
   return res.json();
 };
 
-export default getProduct;
+export default getProducts;
