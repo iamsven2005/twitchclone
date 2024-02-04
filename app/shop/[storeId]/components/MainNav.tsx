@@ -7,9 +7,10 @@ import NavbarActions from "./navbar-actions";
 interface MainNavProps {
   data: Category[];
   store: string;
+  name: string;
 }
 
-const MainNav: React.FC<MainNavProps> = ({ data,store }) => {
+const MainNav: React.FC<MainNavProps> = ({ data,store,name }) => {
   const pathname = usePathname();
   
   const routes = data.map((route) => ({
@@ -20,8 +21,8 @@ const MainNav: React.FC<MainNavProps> = ({ data,store }) => {
 
   return (
     <nav className="navbar bg-slate-100">
-    <NavbarActions/>
-
+    <NavbarActions id={store}/>
+    <Link href={`/shop/${store}`} className="btn btn-link">{name}</Link>
     {routes.map((route) => (
       <Link 
       key={route.href} 

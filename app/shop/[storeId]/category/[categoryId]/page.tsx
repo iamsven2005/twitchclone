@@ -3,6 +3,7 @@ import getCategory from "../../components/get/get-category";
 import getColors from "../../components/get/get-color";
 import getProducts from "../../components/get/get-products";
 import getSizes from "../../components/get/get-sizes";
+import ProductList from "../../components/productcard";
 export const revalidate = 0;
 interface CategoryProps{
     params:{
@@ -28,7 +29,7 @@ const Category = async({
         sizeId: searchParams.sizeId,
     },
     data,
-    newid,
+    newid
     )
     const sizes = await getSizes(data,newid);
     const colors = await getColors(data,newid);
@@ -42,11 +43,20 @@ const Category = async({
               <div style={{backgroundImage: `url(${category.billboard.imageUrl})`}} 
               className="rounded-xl hero-content w-full text-center bg-no-repeat">
                 <h1 className="text-5xl font-bold">{category.billboard.label}</h1></div>
-            </div> 
+            </div>
             <Filter
             value="sizeId"
             name="Sizes"
             data={sizes}/>
+            <Filter
+            value="ColorsId"
+            name="Colors"
+            data={colors}/>
+            <ProductList
+            products={products}
+            id={params.storeId}
+            />
+
         </div>
 
     );

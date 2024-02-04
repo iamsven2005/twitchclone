@@ -14,7 +14,7 @@ products,
 id
 }:Billboardprops) => {
     return ( 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 p-6">
         {products.length === 0 && <NoResults/>}
         {products.map((route) => (
           <div key={route.id} className="card w-96 bg-primary-100 shadow-xl">

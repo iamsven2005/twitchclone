@@ -2,10 +2,6 @@ import { redirect } from 'next/navigation';
 import { db as prismadb } from "@/lib/db";
 import MainNav from './components/MainNav';
 import getCategories from './components/get/get-categories';
-import getbillboards from './components/get/get-billboards';
-import getProducts from './components/get/get-products';
-import Billboardcard from './components/billboard';
-import ProductList from './components/productcard';
 
 export default async function DashboardLayout({
   children,
@@ -30,23 +26,13 @@ export default async function DashboardLayout({
 
 
   const Categories = await getCategories(data, store.id);
-  const Billboard = await getbillboards(data, store.id);
-  const products = await getProducts( {isFeatured: true}, data, store.id)
   return (
 
     <div>
-
-    <MainNav store={store.id}data={Categories}/>
-    <Billboardcard Billboard={Billboard}/>
+    <MainNav name={store.name}store={store.id}data={Categories}/>
     {children}
 
-      <div className="card-title font-bold">
-        Featured Products
-      </div>
-    <ProductList
-    products={products}
-    id={store.id}
-    />
+
 
  
 

@@ -1,3 +1,4 @@
+import Storebutton from "../../components/buy-button";
 import Gallery from "../../components/gallery";
 import getProduct from "../../components/get/get-product";
 import getProducts from "../../components/get/get-products";
@@ -21,6 +22,7 @@ const Products = async({
     params.storeId,
      
     )
+
     return ( <div>
 
 <div className="hero min-h-screen bg-base-200">
@@ -39,7 +41,8 @@ const Products = async({
         <div className="rounded-full h-6 w-6" 
         style={{backgroundColor: product?.color?.value}}> </div>
         <p className="py-3">Category: {product.category.name}</p>
-      <button className="btn btn-primary">Add to cart</button>
+        <Storebutton
+        product={product}/>
     </div>
   </div>
 </div>
