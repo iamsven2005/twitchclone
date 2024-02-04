@@ -12,15 +12,6 @@ interface idprops{
 const CartPage = ({
     params,
 }:idprops) => {
-
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(()=>{
-        setIsMounted(false);
-
-    },[])
-    if(!isMounted){
-        return null;
-    }
     const cart = useCart();
     return ( 
         <div className="px-4 py-16 sm:px-6 lg:px-8">
