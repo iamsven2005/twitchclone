@@ -70,8 +70,8 @@ export async function POST(
     phone_number_collection: {
       enabled: true,
     },
-    success_url: `${process.env.FRONTEND_STORE_URL}/cart?success=1`,
-    cancel_url: `${process.env.FRONTEND_STORE_URL}/cart?canceled=1`,
+    success_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/shop/${params.storeId}/cart?success=1`,
+    cancel_url: `${process.env.NEXT_PUBLIC_VERCEL_URL}/shop/${params.storeId}/cart?canceled=1`,
     metadata: {
       orderId: order.id
     },
