@@ -25,8 +25,8 @@ const Products = async({
 
     return ( <div>
 
-<div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row">
+<div className="min-h-screen bg-base-200">
+  <div className="flex-col lg:flex-row">
   <Gallery images={product.images}
 />
     <div>

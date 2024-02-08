@@ -2,6 +2,8 @@ import { redirect } from 'next/navigation';
 import { db as prismadb } from "@/lib/db";
 import MainNav from './components/MainNav';
 import getCategories from './components/get/get-categories';
+import { Input } from '@/components/ui/input';
+import { DataTable } from '@/components/ui/data-table';
 
 export default async function DashboardLayout({
   children,
@@ -29,7 +31,10 @@ export default async function DashboardLayout({
   return (
 
     <div>
+    {/* <iframe src="https://shaping.azurewebsites.net/"></iframe> */}
+
     <MainNav name={store.name}store={store.id}data={Categories}/>
+    
     {children}
 
 
