@@ -9,25 +9,27 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useUser } from "@clerk/nextjs";
 export const SearchInput = () => {
   const router = useRouter();
   const [value, setValue] = useState("");
   const debouncedValue = useDebounce(value, 500);
-
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
-
+  const {user} = useUser();
   useEffect(() => {
     const url = qs.stringifyUrl({
-      url: "/board",
+      url: `/u/${user?.username}/board/`,
       query: {
         search: debouncedValue,
       },
     }, { skipEmptyString: true, skipNull: true });
-
+  
     router.push(url);
-  }, [debouncedValue, router]);
+  }, [debouncedValue, router, user]);
+  
 
   return (
     <div className="w-full relative">

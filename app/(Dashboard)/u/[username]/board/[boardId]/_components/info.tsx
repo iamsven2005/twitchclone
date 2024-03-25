@@ -11,6 +11,7 @@ import { api } from "@/convex/_generated/api";
 import { Actions } from "@/app/_components/actions";
 import { Id } from "@/convex/_generated/dataModel";
 import { useRenameModal } from "@/app/_components/modals/use-rename-modal"; 
+import { useUser } from "@clerk/nextjs";
 
 interface InfoProps {
   boardId: string;
@@ -28,11 +29,11 @@ const TabSeparator = () => {
     </div>
   );
 };
-
 export const Info = ({
   boardId,
 }: InfoProps) => {
   const { onOpen } = useRenameModal();
+  const {user} = useUser();
 
   const data = useQuery(api.board.get, {
     id: boardId as Id<"boards">,
@@ -44,7 +45,7 @@ export const Info = ({
     <div className="absolute top-2 left-2 bg-white rounded-md px-1.5 h-12 flex items-center shadow-md">
       <div data-tip="Go to boards" className="tooltip tooltip-bottom">
         <button className="btn px-2">
-          <Link href="/board">
+          <Link href={`/u/${user?.username}/board`}>
               Boards
           </Link>
         </button>

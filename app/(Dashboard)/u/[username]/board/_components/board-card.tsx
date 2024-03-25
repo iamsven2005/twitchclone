@@ -62,7 +62,7 @@ export const BoardCard = ({
   };
 
   return (
-    <Link href={`/board/${id}`}>
+    <Link href={`/u/${user?.username}/board/${id}`}>
       <div className="group aspect-[100/127] border rounded-lg flex flex-col justify-between overflow-hidden">
         <div className="relative flex-1 bg-amber-50">
           <Image
