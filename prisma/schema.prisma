@@ -153,7 +153,8 @@ model Product {
   colorId     String    // Foreign Key to Color
   color       Color     @relation(fields: [colorId], references: [id])
   images      Image[]   // Relation to Image model
-  orderItems  OrderItem[]   // Relation to Order model
+  orderItems  OrderItem[]
+  description String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
