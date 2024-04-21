@@ -57,11 +57,11 @@ export const StreamPlayer = ({
         )
     }
     return (
-        <div>
+        <div className="flex container flex-col">
             <LiveKitRoom
             token={token}
             serverUrl={process.env.NEXT_PUBLIC_WS_URL}
-            className="hero bg-base-200 join join-vertical lg:join-horizontal"
+            className="hero bg-base-200 join join-vertical"
             >
 
             <Video

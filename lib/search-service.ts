@@ -38,6 +38,13 @@ export const getSearch = async (term?: string) => {
               },
             }
           },
+          {
+            user: {
+              bio:{
+                contains: term,
+              }
+            }
+          },
         ],
       },
       select: {
@@ -73,12 +80,20 @@ export const getSearch = async (term?: string) => {
               },
             }
           },
+          {
+            user: {
+              bio:{
+                contains: term,
+              }
+            }
+          },
         ],
       },
       select: {
         user: true,
         id: true,
         name: true,
+        bio: true,
         isLive: true,
         thumbnailUrl: true,
         updatedAt: true,
