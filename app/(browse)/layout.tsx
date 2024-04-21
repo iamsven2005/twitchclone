@@ -5,6 +5,7 @@ import {Actions} from "../_components/reuse/Actions";
 import { Recommends } from "../_components/recommend"; 
 import { Container } from "../_components/reuse/Container";
 import { getUserByUsername } from "@/lib/user-service";
+import Link from "next/link";
 interface BrowseLayoutProps {
   children: React.ReactNode;
 
@@ -22,7 +23,6 @@ const BrowseLayout = async ({ children }: BrowseLayoutProps) => {
   if (params.username) {
     self = await getUserByUsername(params.username);
   }
-
   return(
 <div className="drawer">
 <input type="checkbox"         
@@ -39,6 +39,7 @@ value={self?.theme ?? "default"}
       <div className="navbar-end gap-2">
       <div className="form-control gap-2">
         <Search />
+        
       </div>
       <Actions/>
     
@@ -59,6 +60,9 @@ value={self?.theme ?? "default"}
       {/* Sidebar content here */}
       <li className="text-primary">For You</li>
       <Recommends/>
+      <li className="btn">Your Current Credit: {self?.credit}</li>
+      <li><Link href={`/u/${self?.username}/settings`}>
+      Using theme: {self?.theme}</Link></li>
     </ul>
   </div>
 </div>

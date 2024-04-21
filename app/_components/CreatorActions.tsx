@@ -12,6 +12,7 @@ import {
     Store
  } from "lucide-react"
 import { NavItem } from './reuse/nav-item';
+
 export const Logo3 = () => {
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -34,7 +35,7 @@ export const Logo3 = () => {
         window.removeEventListener('resize', handleResize);
       };
     }
-  }, []);   
+  }, []);
     return (
         <div>
         {windowWidth < 640 ? (
@@ -85,7 +86,7 @@ export const CreateBar = () =>{
     ];
     const settings = [
         {
-            label:"Settings",
+            label:"Themes",
             href: `/u/${user?.username}/settings`,
             icon: Settings,
         },

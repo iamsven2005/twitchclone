@@ -11,6 +11,12 @@ import {
   const client = createClient({
     throttle: 16,
     authEndpoint: "/api/liveblocks-auth",
+    async resolveUsers({ userIds }) {
+      return [];
+    },
+    async resolveMentionSuggestions({ text, roomId }) {      
+      return [];
+    },
   });
   
   // Presence represents the properties that exist on every user in the Room
@@ -96,10 +102,5 @@ import {
       useRemoveReaction,
     }
   } = createRoomContext<Presence, Storage, UserMeta, RoomEvent, ThreadMetadata>(client, {
-    async resolveUsers({ userIds }) {
-      return [];
-    },
-    async resolveMentionSuggestions({ text, roomId }) {      
-      return [];
-    },
+    
   });

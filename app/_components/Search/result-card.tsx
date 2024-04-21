@@ -16,7 +16,7 @@ export const ResultCard = ({
 }: ResultCardProps) => {
   return (
     <Link href={`/view/${data.user.username}`}>
-      <div className="card w-90 bg-base-100 shadow-xl">
+      <div className="card w-90 bg-base-100 shadow-xl hover:bg-base-200 text-primary">
         <Thumbnail
           src={data.thumbnailUrl}
           fallback={data.user.imageUrl}
@@ -29,11 +29,11 @@ export const ResultCard = ({
             username={data.user.username}
             imageUrl={data.user.imageUrl}
             isLive={data.isLive}/>
-            <p className="truncate card-title hover:text-blue-500">
+            <p className="truncate card-title hover:text-blue-500 text-accent">
               {data.name}
             </p>
             </div>
-            <p className="text-muted-foreground">
+            <p className=" text-muted-foreground">
               {data.user.username}
             </p>
           </div>
