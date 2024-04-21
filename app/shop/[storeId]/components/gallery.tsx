@@ -7,10 +7,10 @@ interface GalleryProps {
 
 const Gallery = ({ images }: GalleryProps) => {
   return (
-    <Carousel >
-      <CarouselContent className="w-96">
+    <Carousel className="w-full max-w-xs">
+      <CarouselContent>
       {images.map((image, index) => (
-        <CarouselItem key={image.id} id={index.toString()} className="carousel-item w-full">
+        <CarouselItem key={image.id} id={index.toString()} className="flex aspect-square items-center justify-center p-6">
           <figure>
             <img src={image.url} alt={image.url} className="w-full" />
 

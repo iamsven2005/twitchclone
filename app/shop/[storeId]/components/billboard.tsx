@@ -17,8 +17,8 @@ Billboard,
             <div key={route.id} className="carousel-item w-full ">
               <div style={{backgroundImage: 
                 `url(${route.imageUrl})`}} 
-                className="rounded-xl relative aspect-square md:aspect-[2.4]/1 overflow-hidden bg-cover">
-                  <h1 className="text-3xl font-bold sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs">
+                className="rounded-xl w-full m-5 p-5 bg-cover h-40 ">
+                  <h1 className="text-3xl font-bold sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs bg-base-200">
                   {route.label}</h1></div>
             </div> 
           ))}     

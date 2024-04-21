@@ -31,11 +31,12 @@ export default async function DashboardLayout({
   return (
 
     <div>
-    {/* <iframe src="https://shaping.azurewebsites.net/"></iframe> */}
 
     <MainNav name={store.name}store={store.id}data={Categories}/>
-    
+    <div className='flex container w-90'>
     {children}
+    </div>
+   
 
 
 

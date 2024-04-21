@@ -23,10 +23,10 @@ const Products = async({
      
     )
 
-    return ( <div>
+    return ( <div className="w-full">
 
-<div className="min-h-screen bg-base-200">
-  <div className="flex-col lg:flex-row">
+<div className="min-h-screen bg-base-200 items-center m-0 sm:m-5 p-10 w-full">
+  <div className="flex-col lg:flex-row w-90">
   <Gallery images={product.images}
 />
     <div>

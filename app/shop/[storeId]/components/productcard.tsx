@@ -14,12 +14,13 @@ products,
 id
 }:Billboardprops) => {
     return ( 
-        <div className="grid md:grid-cols-3 gap-4 md:gap-8 items-start">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-8 w-90">
         {products.length === 0 && <NoResults/>}
         {products.map((route) => (
-          <div key={route.id} className="card w-96 bg-primary-100 shadow-xl">
-          <Gallery images={route.images}/>
+          <div key={route.id} className="flex w-90 bg-primary-100 shadow-xl items-center bg-destructive">
           <div className="card-body">
+          <Gallery images={route.images}/>
+
             <h2 className="card-title">{route.name}</h2>
             <p>Category: {route.category.name}</p>
             <p>Color: {route.color.name}</p>
