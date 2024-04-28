@@ -4,7 +4,8 @@ import ProductList from "../components/productcard";
 import { redirect } from "next/navigation";
 import getbillboards from "../components/get/get-billboards";
 import Billboardcard from "../components/billboard";
-
+import { currentUser } from "@clerk/nextjs";
+import { getUserByUsername } from "@/lib/user-service";
 interface shopprops{
   params:{
     storeId: string;
@@ -25,14 +26,23 @@ export default async function Shop({
   const Billboard = await getbillboards(data, store.id);
 
   const products = await getProducts( {isFeatured: true}, data, store.id)
+  const userparams = await currentUser();
 
+  if (!userparams) {
+    return null;
+  }
+
+  let self = null;
+
+  if (userparams.username) {
+    self = await getUserByUsername(userparams.username);
+  }
   return (
-  <div>
+  <div className="flex container flex-col">
+    <input type="checkbox"         
+value={self?.theme ?? "default"} 
+ className="invisible theme-controller" checked disabled/>
     <Billboardcard Billboard={Billboard}/>
-
-    <div className="card-title font-bold">
-        Featured Products
-    </div>
     <ProductList
     products={products}
     id={store.id}

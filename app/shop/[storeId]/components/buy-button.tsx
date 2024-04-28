@@ -16,7 +16,7 @@ const Storebutton = ({
     }
     return (
         <button 
-        className="btn btn-primary"
+        className="btn btn-outline"
         onClick={onAddToCart}
         >Add to cart</button>
 
