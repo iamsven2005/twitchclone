@@ -12,6 +12,7 @@ export const getUserByUsername = async (username: string) => {
         imageUrl: true,
         theme: true,
         credit: true,
+        createdAt: true,
         stream: {
           select: {
             id: true,
@@ -26,6 +27,7 @@ export const getUserByUsername = async (username: string) => {
         _count: {
           select: {
             followedBy: true,
+            following: true,
           },
         },
       },

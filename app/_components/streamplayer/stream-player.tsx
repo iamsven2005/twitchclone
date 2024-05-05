@@ -26,7 +26,9 @@ type CustomStream = {
     bio: string | null;
     stream: CustomStream | null;
     imageUrl: string;
-    _count: { followedBy: number }
+    _count: { followedBy: number, following: number }
+    credit: number | null
+    createdAt: Date
   };
   interface StreamPlayerProps {
     user: CustomUser;
@@ -56,6 +58,11 @@ export const StreamPlayer = ({
             </div>
         )
     }
+    let creds = user.credit; 
+
+    if (creds == null) {  
+      creds = 0;
+    }
     return (
         <div className="flex container flex-col">
             <LiveKitRoom
@@ -63,7 +70,7 @@ export const StreamPlayer = ({
             serverUrl={process.env.NEXT_PUBLIC_WS_URL}
             className="hero bg-base-200 join join-vertical"
             >
-
+            
             <Video
             hostName={user.username}
             hostIdentity={user.id}/>
@@ -78,6 +85,7 @@ export const StreamPlayer = ({
                 isChatFollowersOnly={stream.isChatFollowersOnly}
               />
             )}
+            
             <Header
                 hostName={user.username}
                 hostIdentity={user.id}
@@ -100,9 +108,14 @@ export const StreamPlayer = ({
             viewerIdentity={identity}
             bio={user.bio}
             followedByCount={user._count.followedBy}
-          />
-            </LiveKitRoom>
+            followingCount={user._count.following}
+            credit={creds}
+            created={user.createdAt.toUTCString()}
 
+          />
+          <div>
+          </div>
+            </LiveKitRoom>
         </div>
 
     )

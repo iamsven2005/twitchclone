@@ -9,17 +9,6 @@ datasource db {
   url = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
-//SQLITE
-// model User{
-//   id String @id @default(uuid())
-//   username String @unique
-//   imageUrl String 
-//   externalUserId String @unique
-//   bio String? 
-
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
 
 model User {
   id            String       @default(cuid()) @id
@@ -35,10 +24,40 @@ model User {
   blocking Block[] @relation("Blocking")
   blockedBy Block[] @relation("BlockedBy")
   stream Stream?
-
+  posts Post[]
+  comments Comment[]
+  notifications Notifications[]
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   @@map(name: "users")
+}
+model Post {
+    id String @id @default(cuid())
+    body String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    userId String
+    likedIds String[]
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    comments Comment[]
+}
+model Comment{
+    id String @id @default(cuid())
+    body String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    userId String
+    postId String
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+}
+model Notifications {
+    id String @id @default(cuid())
+    body String
+    createdAt DateTime @default(now())
+    userId String
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 model Follow {
     id String @id @default(cuid())
