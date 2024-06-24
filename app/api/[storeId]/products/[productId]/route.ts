@@ -1,3 +1,4 @@
+//Create and gets producst by validating the product features 
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 import { db as prismadb } from "@/lib/db";

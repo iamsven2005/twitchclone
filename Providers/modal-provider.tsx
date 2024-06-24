@@ -1,7 +1,6 @@
 "use client";
-
+//stores the state of modal
 import { useEffect, useState } from "react";
-
 import { RenameModal } from "@/app/_components/modals/rename-modal";
 import { StoreModal } from "@/app/_components/modals/store-modal";
 

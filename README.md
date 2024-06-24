@@ -7,12 +7,16 @@ RTMP/WHIP LIVEKIT
 liveblocks
 convex
 
-## Currently hosted on vercel
+## Install commands
+### Currently hosted on vercel
+
 npm install
 npm run build
 npx prisma generate
 npx convex deploy
 npm run dev
+
+## Features
 
 Follow, bock and recommend user
 Searching for streaming

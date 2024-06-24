@@ -1,5 +1,5 @@
+// Create or get colors of products for filtering of product
 import { NextResponse } from 'next/server';
-
 import { db as prismadb } from "@/lib/db";
 import { auth } from '@clerk/nextjs';
  

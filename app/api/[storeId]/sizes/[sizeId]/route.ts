@@ -1,5 +1,5 @@
+//Get, Delete, Patch size by providing size-id
 import { NextResponse } from "next/server";
-
 import { db as prismadb } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 

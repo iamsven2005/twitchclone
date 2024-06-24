@@ -1,3 +1,4 @@
+//Create and get sizes of products by getting store-id
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import { db as prismadb } from "@/lib/db";

@@ -1,6 +1,8 @@
+//The first page of creating a shopfront 
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import { db as prismadb } from '@/lib/db';
+
 export async function POST(
   req: Request,
 ) {

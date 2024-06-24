@@ -1,3 +1,4 @@
+//gets billboard-id, GET, UPDATE, DELETE api endpoints for storefront
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 import { db as prismadb } from "@/lib/db";

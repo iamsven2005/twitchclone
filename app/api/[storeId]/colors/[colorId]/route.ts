@@ -1,3 +1,4 @@
+//Get, patch, delete color by api shopfront
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 import { db as prismadb } from "@/lib/db";

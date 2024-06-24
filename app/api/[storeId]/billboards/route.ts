@@ -1,3 +1,4 @@
+//Creates or get billboard by getting the storeid
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import { db as prismadb } from '@/lib/db'; 

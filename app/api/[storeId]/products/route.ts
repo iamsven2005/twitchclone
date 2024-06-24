@@ -1,3 +1,4 @@
+//Create and get products by providing shop-id
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import { db as prismadb } from "@/lib/db";

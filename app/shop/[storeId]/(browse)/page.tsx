@@ -1,3 +1,4 @@
+//homepage for shopfront
 import { db } from "@/lib/db";
 import getProducts from "../components/get/get-products";
 import ProductList from "../components/productcard";
@@ -6,6 +7,7 @@ import getbillboards from "../components/get/get-billboards";
 import Billboardcard from "../components/billboard";
 import { currentUser } from "@clerk/nextjs";
 import { getUserByUsername } from "@/lib/user-service";
+
 interface shopprops{
   params:{
     storeId: string;

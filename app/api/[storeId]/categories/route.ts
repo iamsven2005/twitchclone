@@ -1,3 +1,4 @@
+//Gets storeid to create or get categories for products
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import { db as prismadb } from "@/lib/db";

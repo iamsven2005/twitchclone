@@ -1,3 +1,4 @@
+//stores modal state
 import { create } from 'zustand';
 
 interface useStoreModalStore {

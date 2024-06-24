@@ -1,3 +1,4 @@
+//gets the origin of the windows location
 import { useEffect, useState } from "react";
 
 export const useOrigin = () => {

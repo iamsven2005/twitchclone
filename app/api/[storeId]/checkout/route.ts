@@ -1,3 +1,4 @@
+//Gets shopid, Creates a stripe session for shopfront
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 

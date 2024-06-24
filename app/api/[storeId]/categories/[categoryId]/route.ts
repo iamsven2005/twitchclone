@@ -1,3 +1,4 @@
+//Get category-id, GET, DELETE, PATCH on categories
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 import { db as prismadb } from "@/lib/db";

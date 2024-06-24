@@ -1,3 +1,4 @@
+//Takes in storeid, return the total value earned
 import { db as prismadb} from "@/lib/db";
 export const getTotalRevenue = async (storeId: string) => {
   const paidOrders = await prismadb.order.findMany({
